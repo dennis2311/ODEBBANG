@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function BaseballKorea({ goNextEvent }) {
+  console.log('지우 수정함');
   return (
     <>
       <h1 className="event__title">야구</h1>
