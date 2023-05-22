@@ -3,7 +3,7 @@
  * @author 현웅
  */
 export function BaseballYonsei({ goNextEvent }) {
-  console.log("고려대인 유한 수정함");
+  console.log("유한 수정함");
   return (
     <>
       <h1 className="event__title">야구</h1>
