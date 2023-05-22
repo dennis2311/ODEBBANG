@@ -15,5 +15,5 @@ export function RugbyYonsei({ goNextEvent }) {
         </button>
       </div>
     </>
-
+  );
 }
