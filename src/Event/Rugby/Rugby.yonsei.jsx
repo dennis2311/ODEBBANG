@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function RugbyYonsei({ goNextEvent }) {
+  console.log("채원 수정함");
   return (
     <>
       <h1 className="event__title">럭비</h1>
@@ -14,5 +15,5 @@ export function RugbyYonsei({ goNextEvent }) {
         </button>
       </div>
     </>
-  );
+
 }
