@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function BasketballYonsei({ goNextEvent }) {
+  console.log("범용");
   return (
     <>
       <h1 className="event__title">농구</h1>
