@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function RugbyKorea({ goNextEvent }) {
+  console.log('재은 수정')
   return (
     <>
       <h1 className="event__title">럭비</h1>
