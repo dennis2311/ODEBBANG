@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function IceHockeyKorea({ goNextEvent }) {
+  console.log('효은 수정함');
   return (
     <>
       <h1 className="event__title">아이스하키</h1>
