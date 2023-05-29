@@ -14,6 +14,7 @@ import "./app.css";
 export function App() {
   const [univ, setUniv] = useState();
 
+
   useEffect(() => {
     console.log("APP rendered");
     // const url = new URL(window.location.href);
@@ -32,3 +33,5 @@ export function App() {
     </div>
   );
 }
+
+
