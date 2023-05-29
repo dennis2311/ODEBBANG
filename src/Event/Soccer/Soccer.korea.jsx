@@ -4,6 +4,7 @@
  */
 export function SoccerKorea({ goNextEvent }) {
   console.log("20230529 효원 수정함");
+  console.log("20230529 현웅 수정함");
   return (
     <>
       <h1 className="event__title">축구</h1>

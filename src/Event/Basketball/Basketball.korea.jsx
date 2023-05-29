@@ -3,7 +3,7 @@
  * @author 현웅
  */
 export function BasketballKorea({ goNextEvent }) {
-  console.log('준엽 다녀감')
+  console.log('20230529 준엽 다녀감')
   return (
     <>
       <h1 className="event__title">농구</h1>
