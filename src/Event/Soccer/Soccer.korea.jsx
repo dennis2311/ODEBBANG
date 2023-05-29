@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function SoccerKorea({ goNextEvent }) {
+  console.log("20230529 효원 수정함");
   console.log("20230529 현웅 수정함");
   return (
     <>
