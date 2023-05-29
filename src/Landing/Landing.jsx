@@ -9,7 +9,7 @@ import "./landing.css";
 export function Landing({ goNextPage, setSelectedUniv }) {
   function onSelectKorea() {
     setSelectedUniv("KOREA");
-    goNextPage();
+    goNextPage(); 
   }
 
   function onSelectYonsei() {
