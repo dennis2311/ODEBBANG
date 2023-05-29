@@ -4,6 +4,7 @@
  */
 export function BaseballKorea({ goNextEvent }) {
   console.log('지우 수정함');
+  console.log('20230529 형진 수정함');
   return (
     <>
       <h1 className="event__title">야구</h1>
