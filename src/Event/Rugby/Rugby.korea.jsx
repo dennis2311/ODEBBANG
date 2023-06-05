@@ -3,8 +3,8 @@
  * @author 현웅
  */
 
-import React, { useRef } from 'react';
-import anime from 'animejs';
+import { useRef } from "react";
+import anime from "animejs";
 
 export function RugbyKorea({ goNextEvent }) {
   console.log("형진 수정");
@@ -13,9 +13,9 @@ export function RugbyKorea({ goNextEvent }) {
   const handleButtonClick = () => {
     anime({
       targets: buttonRef.current,
-      translateX: '100vw',
+      translateX: "100vw",
       duration: 1000,
-      easing: 'easeOutExpo'
+      easing: "easeOutExpo",
     });
   };
 
