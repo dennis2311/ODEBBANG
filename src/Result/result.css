@@ -7,6 +7,7 @@
 }
 
 .result__title {
+  font-family: 'Nanum Gothic', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 56px;
@@ -44,16 +45,14 @@
 
 .result_yonseiCnt {
   color: white;
-
-
   text-align: left;
 }
 
-.result_koreaCnt {
-  /* font-family: 'Nanum Gothic', sans-serif; */
+.result_versus {
+  margin-left: auto;
+}
 
-  /* font-weight: 400; */
+.result_koreaCnt {
   color: white;
   margin-left: auto;
-  /* font-size: 1rem; */
 }
