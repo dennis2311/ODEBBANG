@@ -3,6 +3,7 @@
  * @author 현웅
  */
 export function IceHockeyYonsei({ goNextEvent }) {
+  console.log("2023/05/29 문범용");
   return (
     <>
       <h1 className="event__title">아이스하키</h1>
