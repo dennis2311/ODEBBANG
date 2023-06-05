@@ -2,14 +2,17 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
 .result__title {
-  font-size: 48px;
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 56px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .result__content {
@@ -23,4 +26,34 @@
   background-color: #f8e431;
   padding: 16px 24px;
   border-radius: 8px;
+}
+
+.result_totalCnt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80vh;
+  height: 5vh;
+  background: linear-gradient(90deg, rgba(0, 102, 255, 0.9) 0%, rgba(255, 0, 0, 0.9) 100%);
+  border-radius: 40px;
+  padding: 20px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.result_yonseiCnt {
+  color: white;
+
+
+  text-align: left;
+}
+
+.result_koreaCnt {
+  /* font-family: 'Nanum Gothic', sans-serif; */
+
+  /* font-weight: 400; */
+  color: white;
+  margin-left: auto;
+  /* font-size: 1rem; */
 }
