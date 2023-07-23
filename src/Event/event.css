@@ -1,3 +1,11 @@
+.event.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .event__title {
   font-size: 24px;
   font-weight: 700;
@@ -10,4 +18,18 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
+}
+
+.event__subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12px;
+  cursor: pointer; /* 커서를 포인터로 변경하여 버튼처럼 보이도록 설정 */
+  transition: transform 0.5s ease-in-out; /* 확대/축소 효과를 위한 트랜지션 */
+}
+
+/* 확대된 상태의 스타일 */
+.event__subtitle.expanded {
+  transform: scale(1.5); /* 문구를 1.5배로 확대 */
 }
