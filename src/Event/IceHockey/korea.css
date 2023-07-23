@@ -1,0 +1,16 @@
+div{
+    animation: flash 1s linear initial;
+}
+.move{
+    position: absolute;
+    visibility: hidden;
+}
+
+@keyframes flash { 
+    0%,  95%,  98% {
+      background-color: #161855;
+    }
+    96%, 99%, 100% {
+      background-color:#fff;
+    }
+}
