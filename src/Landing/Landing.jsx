@@ -9,7 +9,7 @@ import "./landing.css";
 export function Landing({ goNextPage, setSelectedUniv }) {
   function onSelectKorea() {
     setSelectedUniv("KOREA");
-    goNextPage(); 
+    goNextPage();
   }
 
   function onSelectYonsei() {
@@ -18,7 +18,7 @@ export function Landing({ goNextPage, setSelectedUniv }) {
   }
 
   return (
-    <div className="landing container">
+    <div className="page-container">
       <span className="landing__title">랜딩 페이지</span>
 
       <span className="landing__content">응원할 대학 선택하기</span>

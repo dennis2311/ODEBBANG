@@ -22,7 +22,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="app container">
+    <div className="app-container">
       {/* 디버깅을 쉽게 할 수 있도록 추가한 부분이며, 실제 배포에선 제거합니다. */}
       <span
         style={{ display: "flex", justifyContent: "center", padding: 8 }}
