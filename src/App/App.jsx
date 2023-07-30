@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Content } from "./Content";
 import "./app.css";
+import JSConfetti from "js-confetti";
 
 /**
  * 'src/main.jsx' 파일에서 import 하여 처음 랜더링 되는 기초 컴포넌트입니다. 아래 역할을 수행합니다:
@@ -35,3 +36,5 @@ export function App() {
 }
 
 
+
+export const conteffi = new JSConfetti();

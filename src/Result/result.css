@@ -1,9 +1,19 @@
+@font-face {
+  font-family: "neurimboGothicRegular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .result.container {
   flex: 1;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+  background-color: #000B45;
+  background-image: linear-gradient(#7C0415, #9E001600);
+  border: 1px solid black;
 }
 
 .result__title {

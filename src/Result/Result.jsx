@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import "./result.css";
 import YonseiResult from "../Resource/yonsei.png";
 import Soccer from "../Resource/soccer.png";
 import Lightening from "../Resource/lightening.png"
+import JSConfetti from "js-confetti";
+import { conteffi } from "../App/App";
+import { useState } from "react";
+
 /**
  * 이벤트 결과 페이지입니다.
  * 이벤트 결과를 확인하고 (총 참여자 수) 카카오톡 공유하기를 할 수 있습니다.
@@ -9,7 +14,19 @@ import Lightening from "../Resource/lightening.png"
  * @author 현웅
  */
 export function Result({ univ, selectedUniv }) {
+
+  const addConfetti = () => {
+    conteffi.addConfetti({
+      emojis: ["🐯", "🦅"],
+      emojiSize: 100,
+      confettiNumber: 30,
+    });
+  };
+  useEffect(() => {
+    addConfetti();
+  }, []);
   return (
+
     <div className="result container">
       <div className="result__title">
         <div><img src={YonseiResult} alt="yonsei" /></div>
@@ -26,5 +43,5 @@ export function Result({ univ, selectedUniv }) {
       <div>공유해서 우리 학교 응원하기</div>
       <div className="result__shareBtn">{`친구에게 ${selectedUniv} 응원시키기`}</div>
     </div>
-  );
+  )
 }
