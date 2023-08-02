@@ -1,8 +1,56 @@
-#korea {
+/* #korea1 {
     transition: transform 0.4s ease-in-out;
 }
 
-#korea.animating {
+#korea1.animating {
     transform: scale(1.1);
     transition: transform 0.1s ease-out;
+} */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+.flipK {
+	animation: flipK 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes flipK {
+    0% {
+        transform: translateY(0) rotateX(0);
+        transform-origin: 50% 0%;
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%) rotateX(-180deg);
+        transform-origin: 50% 100%;
+        opacity: 0;
+    }
+}
+
+.flipY {
+	animation: flipY 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes flipY {
+    0% {
+        transform: translateY(-100%) rotateX(-180deg);
+        transform-origin: 50% 100%;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) rotateX(0);
+        transform-origin: 50% 0%;
+        opacity: 1;
+    }
+}
+
+.btn_container {
+    display: flex;
+}
+
+#btn1 {
+    position: relative;
+}
+
+#btn2 {
+    position: absolute;
 }
