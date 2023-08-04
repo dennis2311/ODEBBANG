@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./soccer.css";
 import { easeInOut, motion } from "framer-motion";
 
-
 export function SoccerKorea({ goNextEvent }) {
   const variants = {
     click: {
