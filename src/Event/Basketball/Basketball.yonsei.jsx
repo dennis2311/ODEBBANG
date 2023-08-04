@@ -4,7 +4,7 @@
  */
 
 import React, { useRef, useState } from "react";
-
+import anime from 'animejs';
 import './Basketball.yonsei.css';
 
 // export function BasketballYonsei({ goNextEvent }) {
@@ -91,22 +91,49 @@ import './Basketball.yonsei.css';
 export function BasketballYonsei({ goNextEvent }) {
   const [isClicked, setClicked] = useState(false);
 
-  const handleKbtn = () => {
+  const handleKoreaClick = () => {
     setClicked(true);
+  };
+
+  const handleYonseiClick = () => {
+    anime({
+      targets: '.page-wrapper',
+      backgroundPosition: '150% 300%',
+      duration: 1500,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          goNextEvent();
+        }, 500);
+      },
+    });
   };
 
   return (
     <>
-      <h1 className="event__title">농구</h1>
-      <div className="event__btnRow">
-        <div className="btn_container">
-          <button id="btn1" className={`${isClicked ? 'flipK' : ''}`} onClick={handleKbtn}>고대</button>
-          {isClicked && (<button id="btn2" className={`${isClicked ? 'flipY' : ''}`} onClick={goNextEvent}>연대</button>)}
+      <div className="page-wrapper">
+        <div className="header-container">
+          <h5 className="headertext-round">Round 2</h5>
+          <h3 className="headertext-event">농구</h3>
+          <div className="prompt-container">
+            <h1 className="prompt-text">이길 것 같은 팀을</h1>
+            <h1 className="prompt-text">선택해주세요</h1>
+          </div>
         </div>
-        <div className="btn_container">
-          <button id="yonsei" onClick={goNextEvent}>
-            연대
-          </button>
+        <div className="body-container"></div>
+        <div className="buttons-container">
+          <div className="button-container">
+            <div id="btn1" className={`univ-button ${isClicked ? 'flipK' : ''}`} onClick={handleKoreaClick}>
+              <img src="images/korea_logo.svg" alt="고대" />
+            </div>
+            {isClicked && (<div id="btn2" className={`univ-button ${isClicked ? 'flipY' : ''}`} onClick={handleYonseiClick}><img src="images/yonsei_logo.svg" alt="연대" /></div>)}
+          </div>
+          <img className="versus-icon" src="images/lightning.png" alt="아이콘" />
+          <div className="button-container">
+            <div id="yonsei" className="univ-button" onClick={handleYonseiClick}>
+              <img src="images/yonsei_logo.svg" alt="연대" />
+            </div>
+          </div>
         </div>
       </div>
     </>
