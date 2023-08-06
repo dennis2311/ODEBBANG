@@ -48,7 +48,7 @@ export function Event({ univ, goNextPage }) {
   }
 
   return (
-    <div className="event container">
+    <div className="page-container">
       <EventContent />
     </div>
   );

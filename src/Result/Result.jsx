@@ -8,7 +8,7 @@ import "./result.css";
  */
 export function Result({ univ, selectedUniv }) {
   return (
-    <div className="result container">
+    <div className="page-container">
       <span className="result__title">결과 페이지</span>
 
       <span className="result__content">{`어차피 우승은 ${univ}!`}</span>
