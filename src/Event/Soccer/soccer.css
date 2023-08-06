@@ -49,15 +49,43 @@
   margin-bottom: 50px;
 }
 
+.character_container {
+  position: relative;
+  width: 360px;
+}
+
+.tiger, .soccerball, .eagle {
+  position: absolute;
+}
+
 .tiger {
-  width: 187px;
-  height: 330px;
-  left: 30;
+  position: absolute;
+  width: 300px;
+  height: 430px;
+  z-index: 1;
+  left: -80px;
+  top: -60px;
+  overflow: hidden;
+}
+
+.soccerball {
+  position: absolute;
+  z-index: 3;
+  width: 105px;
+  height: 105px;
+  left: 140px;
+  top: 190px;
+  overflow: hidden;
 }
 
 .eagle {
-  width: 187px;
-  height: 330px;
+  position: absolute;
+  width: 230px;
+  height: 370px;
+  z-index: 2;
+  right: -70px;
+  top: -20px;
+  overflow: hidden;
 }
 
 .rotating-button,
@@ -99,3 +127,4 @@
   width: 89px;
   height: 89px;
 }
+
