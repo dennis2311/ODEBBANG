@@ -9,10 +9,11 @@ import anime from 'animejs';
 export function BaseballYonsei({ goNextEvent }) {
 
   const handleKoreaClick = () => {
-    console.log("고대 클릭");
+    yabaweeAnimation(); // 테스트용
   };
 
   const handleYonseiClick = () => {
+    //배경
     anime({
       targets: '.page-wrapper',
       backgroundPosition: '150% 300%',
@@ -23,6 +24,49 @@ export function BaseballYonsei({ goNextEvent }) {
           goNextEvent();
         }, 3500);
       },
+    });
+
+    //독수리
+    anime({
+      targets: '.eagle-image',
+      width: '240px',
+      height: '330px',
+      bottom: '45%',
+      duration: 1500,
+      easing: 'easeOutExpo',
+    });
+
+    //호랑이 (구현 중)
+    anime({
+      targets: '.tiger-image',
+      width: '24px',
+      height: '33px',
+      bottom: '45%',
+      duration: 1500,
+      easing: 'easeOutExpo',
+    });
+  };
+
+  // 섞는 애니메이션
+  const yabaweeAnimation = () => {
+    // 고대 버튼
+    anime({
+      targets: '.korea.button-container',
+      left: '75%',
+      direction: 'alternate',
+      loop: 12,
+      easing: 'easeInOutSine',
+      duration: 200,
+    });
+
+    // 연대 버튼
+    anime({
+      targets: '.yonsei.button-container',
+      right: '75%',
+      direction: 'alternate',
+      loop: 12,
+      easing: 'easeInOutSine',
+      duration: 200,
     });
   };
 
@@ -42,17 +86,17 @@ export function BaseballYonsei({ goNextEvent }) {
         <img className="ball-image" src="images/baseball-ball.svg" alt="야구공" />
       </div>
       <div className="buttons-container">
-        <div className="button-container">
+        <div className="button-container korea">
           <div id="korea" className="univ-button" onClick={handleKoreaClick}>
             <img src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
-        <img className="versus-icon" src="images/lightning.png" alt="아이콘" />
-        <div className="button-container">
+        <div className="button-container yonsei">
           <div id="yonsei" className="univ-button" onClick={handleYonseiClick}>
             <img src="images/yonsei_logo.svg" alt="연대" />
           </div>
         </div>
+        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
       </div>
     </div>
   );
