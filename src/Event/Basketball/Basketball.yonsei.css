@@ -1,8 +1,139 @@
-#korea {
-    transition: transform 0.4s ease-in-out;
+@font-face {
+	font-family: "neurimboGothicRegular";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")
+		format("woff2");
+	font-weight: normal;
+	font-style: normal;
 }
 
-#korea.animating {
-    transform: scale(1.1);
-    transition: transform 0.1s ease-out;
+.page-wrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #000b45;
+	background-image: url("images/background-image.png");
+	background-size: 130%;
+	background-position: 80% 50%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.headertext-round {
+	color: #fff;
+	text-align: center;
+	font-family: neurimboGothicRegular;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-top: 10px;
+}
+
+.headertext-event {
+	color: #fff;
+	text-align: center;
+	font-family: neurimboGothicRegular;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.prompt-container {
+	margin-top: 18px;
+}
+
+.prompt-text {
+	color: #fff;
+	text-align: center;
+	font-family: neurimboGothicRegular;
+	font-size: 36px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.body-container {
+	flex-grow: 1;
+}
+
+.buttons-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 40px;
+}
+
+.button-container {
+	width: 120px;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.univ-button {
+	background-color: transparent;
+}
+
+.univ-button:active {
+	opacity: 60%;
+}
+
+.versus-icon {
+	margin: 10px 30px 0;
+}
+
+.flipK {
+	animation: flipK 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes flipK {
+    0% {
+        transform: translateY(0) rotateX(0);
+        transform-origin: 50% 0%;
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%) rotateX(-180deg);
+        transform-origin: 50% 100%;
+        opacity: 0;
+    }
+}
+
+.flipY {
+	animation: flipY 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes flipY {
+    0% {
+        transform: translateY(-100%) rotateX(-180deg);
+        transform-origin: 50% 100%;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) rotateX(0);
+        transform-origin: 50% 0%;
+        opacity: 1;
+    }
+}
+
+#btn1 {
+    position: relative;
+}
+
+#btn1:hover {
+    cursor: pointer;
+}
+
+#btn2 {
+    position: absolute;
+}
+
+#btn2:hover {
+    cursor: pointer;
 }
