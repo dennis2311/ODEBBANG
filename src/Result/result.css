@@ -5,7 +5,7 @@
   font-style: normal;
 }
 
-.result.container {
+.result_container {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -17,25 +17,25 @@
   background-color: #000B45;
 }
 
-.result.container.korea {
+.result_container.korea {
   background-image: linear-gradient(#7C0415, #9E001600);
 }
 
-.result__title {
+.result_title {
   font-family: 'Nanum Gothic', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 56px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+
 }
 
-.result__content {
+.result_content {
   margin-bottom: 24px;
 }
 
-.result__shareBtn {
+.result_shareBtn {
   font-size: 16px;
   font-weight: 700;
   color: #171601;
@@ -56,6 +56,15 @@
   font-family: 'Nanum Gothic', sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
+}
+
+/*  iPhone 12 */
+@media (max-width: 375px) {
+  .result_totalCnt {
+    font-size: 1.2rem;
+    width: 35vh;
+    height: 4vh;
+  }
 }
 
 .result_yonseiCnt {
