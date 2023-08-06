@@ -3,7 +3,7 @@
  * @author 현웅
  */
 
-import "./Baseball.yonsei.css";
+import "./Baseball.css";
 import anime from 'animejs';
 
 export function BaseballYonsei({ goNextEvent }) {
@@ -36,7 +36,11 @@ export function BaseballYonsei({ goNextEvent }) {
           <h1 className="prompt-text">선택해주세요</h1>
         </div>
       </div>
-      <div className="body-container"></div>
+      <div className="body-container">
+        <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
+        <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
+        <img className="ball-image" src="images/baseball-ball.svg" alt="야구공" />
+      </div>
       <div className="buttons-container">
         <div className="button-container">
           <div id="korea" className="univ-button" onClick={handleKoreaClick}>

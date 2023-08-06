@@ -58,6 +58,34 @@
 
 .body-container {
 	flex-grow: 1;
+	width: 100%;
+	display: flex;
+	position: relative;
+}
+
+.character-image {
+	width: 240px;
+	height: 330px;
+	position: absolute;
+	bottom: 50%;
+	transform: translate(0, 50%);
+}
+
+.tiger-image {
+	left: -5%;
+}
+
+.eagle-image {
+	right: -10%;
+}
+
+.ball-image {
+	width: 119px;
+	height: 119px;
+	position: absolute;
+	top: 65%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .buttons-container {
