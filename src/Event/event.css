@@ -20,16 +20,18 @@
   gap: 16px;
 }
 
-.event__subtitle {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 12px;
-  cursor: pointer; /* 커서를 포인터로 변경하여 버튼처럼 보이도록 설정 */
-  transition: transform 0.5s ease-in-out; /* 확대/축소 효과를 위한 트랜지션 */
+
+.zoomed {
+  transform: scale(3); /* You can adjust the scale value to zoom in further */
+  transition: transform 2s ease-in-out;
 }
 
-/* 확대된 상태의 스타일 */
-.event__subtitle.expanded {
-  transform: scale(1.5); /* 문구를 1.5배로 확대 */
+.event__message {
+  font-size: 30px; /* You can adjust the font size as per your preference */
 }
+
+.event__changed-message {
+  font-size: 0.01em; /* Adjust the font size to make the changed part smaller */
+}
+
+
