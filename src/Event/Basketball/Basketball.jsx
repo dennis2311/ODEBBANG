@@ -7,6 +7,6 @@ import { BasketballYonsei } from "./Basketball.yonsei";
  */
 export function Basketball({ univ, goNextEvent }) {
   if (univ === "KOREA") return <BasketballKorea goNextEvent={goNextEvent} />;
-  if (univ === "YONSEI") return <BasketballYonsei goNextEvent={goNextEvent} />;
+  // if (univ === "YONSEI") return <BasketballYonsei goNextEvent={goNextEvent} />;
   return null;
 }
