@@ -42,6 +42,35 @@
 	line-height: normal;
 }
 
+.resultimage-container {
+	margin-top: -150px;
+	margin-left: -60px;
+	position: absolute;
+}
+
+.result-image {
+	width: 380px;
+	height: 380px;
+	opacity: 0;
+}
+
+.result-container {
+	margin-top: -95px;
+	margin-left: 60px;
+	position: absolute;
+}
+
+.result-text {
+	color: #fff;
+	text-align: center;
+	font-family: neurimboGothicRegular;
+	font-size: 45px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	opacity: 00;
+}
+
 .prompt-container {
 	margin-top: 18px;
 }
