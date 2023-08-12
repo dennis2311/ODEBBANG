@@ -124,6 +124,24 @@
 	opacity: 60%;
 }
 
+.cup {
+	z-index: 20;
+	height: 160px;
+	position: absolute;
+	top: -30%;
+	opacity: 0;
+}
+
+.left.cup {
+	left: 25%;
+	transform: translate(-60%, -50%);
+}
+
+.right.cup {
+	right: 25%;
+	transform: translate(40%, -50%);
+}
+
 .lightning-icon {
 	position: absolute;
 	top: 55%;
