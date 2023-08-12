@@ -5,9 +5,118 @@
 
 import "./Baseball.css";
 import anime from 'animejs';
+import { useState } from "react";
 
 export function BaseballKorea({ goNextEvent }) {
-  const handleKoreaClick = () => {
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const handleButtonClick = () => {
+    if (!gameStarted) startGame();
+  }
+
+  const startGame = () => {
+    setGameStarted(true);
+
+    anime({
+      targets: '.cup',
+      top: '50%',
+      opacity: 1,
+      duration: 1000,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          yabaweeAnimation();
+        }, 300);
+      }
+    });
+
+    setTimeout(() => {
+      var buttons = document.getElementsByClassName('button-container');
+      for (const button of buttons) {
+        button.style.opacity = 0;
+      }
+    }, 1000);
+  };
+
+  const  yabaweeAnimation = () => {
+    anime({
+      targets: '.left.cup',
+      left: '75%',
+      direction: 'alternate',
+      loop: 12,
+      easing: 'easeInOutSine',
+      duration: 200,
+    });
+
+    anime({
+      targets: '.right.cup',
+      right: '75%',
+      direction: 'alternate',
+      loop: 12,
+      easing: 'easeInOutSine',
+      duration: 200,
+    });
+
+    setTimeout(() => {
+      var yonseiLogo = document.getElementById('yonsei-logo');
+      yonseiLogo.src = "images/korea_logo.svg";
+      var buttons = document.getElementsByClassName('button-container');
+      for (const button of buttons){
+        button.style.opacity = 1;
+      }
+
+      var leftCup = document.getElementsByClassName('left cup');
+      var rightCup = document.getElementsByClassName('right cup');
+      leftCup[0].addEventListener('click', () => handleCupClick('left'));
+      rightCup[0].addEventListener('click', () => handleCupClick('right'));
+    }, 12 * 200 + 500);
+  };
+
+  const handleCupClick = (which) => {
+    if (which == 'left') {
+      anime({
+        targets: '.left.cup',
+        top: '-30%',
+        easing: 'easeOutExpo',
+        duration: 500,
+        complete: () => {
+          setTimeout(() => {
+            anime({
+              targets: '.right.cup',
+              top: '-30%',
+              easing: 'easeOutExpo',
+              duration: 500,
+              complete: () => {
+                setTimeout(handleKoreaVictory, 1000)
+              }
+            })
+          }, 1000);
+        }
+      });
+    } else {
+      anime({
+        targets: '.right.cup',
+        top: '-30%',
+        easing: 'easeOutExpo',
+        duration: 500,
+        complete: () => {
+          setTimeout(() => {
+            anime({
+              targets: '.left.cup',
+              top: '-30%',
+              easing: 'easeOutExpo',
+              duration: 500,
+              complete: () => {
+                setTimeout(handleKoreaVictory, 1000)
+              }
+            })
+          }, 1000);
+        }
+      });
+    }
+  };
+
+  const handleKoreaVictory = () => {
     anime({
       targets: '.page-wrapper',
       backgroundSize: '200%',
@@ -68,11 +177,31 @@ export function BaseballKorea({ goNextEvent }) {
       easing: 'easeOutExpo',
       bottom: '40%',
     })
+    anime({
+      targets: '.left.cup',
+      duration: 500,
+      easing: 'easeOutExpo',
+      width: 0,
+      height: 0,
+      opacity: 0,
+      complete: () => {
+        const leftCup = document.querySelector('.left.cup');
+        leftCup.style.display = 'none';
+      }
+    })
+    anime({
+      targets: '.right.cup',
+      duration: 500,
+      easing: 'easeOutExpo',
+      width: 0,
+      height: 0,
+      opacity: 0,
+      complete: () => {
+        const rightCup = document.querySelector('.right.cup');
+        rightCup.style.display = 'none';
+      }
+    })
   };
-
-  const handleYonseiClick = () => {
-    console.log("연대 클릭");
-  }
   
   return (
     <div className="page-wrapper">
@@ -97,17 +226,19 @@ export function BaseballKorea({ goNextEvent }) {
         <img className="ball-image" src="images/baseball-ball.svg" alt="야구공"></img>
       </div>
       <div className="buttons-container">
-        <div className="button-container">
-         <div id="korea" className="univ-button" onClick={handleKoreaClick}>
-           <img src="images/korea_logo.svg" alt="고대" />
+        <div className="button-container korea">
+         <div id="korea" className="univ-button" onClick={handleButtonClick}>
+           <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
-        <img className="versus" src="images/lightning.png" alt="아이콘" />
-        <div className="button-container">
-          <div id="yonsei" className="univ-button" onClick={handleYonseiClick}>
-            <img src="images/yonsei_logo.svg" alt="연대" />
+        <div className="button-container yonsei">
+          <div id="yonsei" className="univ-button" onClick={handleButtonClick}>
+            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
           </div>
         </div>
+        <img className="cup left" src="images/yabawee_cup.svg" />
+        <img className="cup right" src="images/yabawee_cup.svg" />
+        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
       </div>
     </div>
   );
