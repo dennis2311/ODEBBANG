@@ -90,7 +90,8 @@ export function SoccerYonsei({ goNextEvent }) {
             onClick={() => {
               koreaClicked(true);
             }}
-            animate={clicked_K ? "click" : "", clicked_Y ? "korea_logo" : ""}
+            
+            animate={clicked_K ? "click" : (clicked_Y ? "korea_logo" : "")}
             transition={{ duration: 2, ease: easeInOut }}
           >
             <img src="images/korea_logo.svg" alt="고대" className="korea_logo"/>
