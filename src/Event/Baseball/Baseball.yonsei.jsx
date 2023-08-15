@@ -14,7 +14,7 @@ export function BaseballYonsei({ goNextEvent }) {
   // 고대/연대 버튼 누르면 야바위 게임 시작
   const handleButtonClick = () => {
     if (!gameStarted) startGame();
-  }
+  };
 
 
   // 야바위 게임 시작
@@ -104,10 +104,10 @@ export function BaseballYonsei({ goNextEvent }) {
               easing: 'easeOutExpo',
               duration: 500,
               complete: () => {
-                setTimeout(handleYonseiVictory, 1000)
+                setTimeout(handleYonseiVictory, 1000);
               }
             })
-          }, 1500);
+          }, 1000);
         }
       });
     } else {  // 오른쪽 컵 선택
@@ -124,10 +124,10 @@ export function BaseballYonsei({ goNextEvent }) {
               easing: 'easeOutExpo',
               duration: 500,
               complete: () => {
-                setTimeout(handleYonseiVictory, 1000)
+                setTimeout(handleYonseiVictory, 1000);
               }
             })
-          }, 1500);
+          }, 1000);
         }
       });
     }
@@ -135,19 +135,27 @@ export function BaseballYonsei({ goNextEvent }) {
 
 
   // 게임 종료 후 호랑이 축소 & 독수리 확대 & 배경색 변경
-  // TODO: 애니메이션 수정
   const handleYonseiVictory = () => {
-    //배경
+
+    // 빨간색 배경 없애기
     anime({
       targets: '.page-wrapper',
       backgroundPosition: '150% 300%',
-      duration: 1500,
+      duration: 1200,
       easing: 'easeOutExpo',
       complete: () => {
         setTimeout(() => {
           goNextEvent();
-        }, 1500);
+        }, 300);
       },
+    });
+
+    // 파란색 그라데이션 배경 추가
+    anime({
+      targets: '.page-background',
+      opacity: 1,
+      duration: 1200,
+      easing: 'easeOutExpo',
     });
 
     //독수리
@@ -156,30 +164,95 @@ export function BaseballYonsei({ goNextEvent }) {
       width: '240px',
       height: '330px',
       bottom: '45%',
-      duration: 1500,
+      right: '50%',
+      translateX: '50%',
+      translateY: '50%',
+      duration: 1200,
       easing: 'easeOutExpo',
     });
 
-    //호랑이 (구현 중)
+    //호랑이
     anime({
       targets: '.tiger-image',
-      width: '24px',
-      height: '33px',
+      width: '0',
+      height: '0',
       bottom: '45%',
-      duration: 1500,
+      duration: 1200,
       easing: 'easeOutExpo',
+    });
+
+    anime({
+      targets: '.ball-image',
+      top: '80%',
+      left: '25%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    anime({
+      targets: '.prompt-text',
+      duration: 500,
+      easing: 'easeOutExpo',
+      opacity: 0,
+    });
+
+    anime({
+      targets: '.result-text',
+      duration: 1300,
+      easing: 'easeOutExpo',
+      opacity: 1,
+    });
+
+    anime({
+      targets: '.result-image',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      opacity: 1,
+    });
+
+    anime({
+      targets: '.resultimage-container',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      bottom: '40%',
+    });
+
+    anime({
+      targets: '.cup',
+      duration: 500,
+      easing: 'easeOutExpo',
+      width: 0,
+      height: 0,
+      opacity: 0,
+      complete: () => {
+        const cups = document.getElementsByClassName('.cup');
+        for (const cup of cups) {
+          cup.style.display = 'none';
+        }
+      }
     });
   };
 
 
   return (
     <div className="page-wrapper">
+      <div className="page-background">
+        <h5 className="headertext-round">Round 1</h5>
+        <h3 className="headertext-event">야구</h3>
+      </div>
       <div className="header-container">
         <h5 className="headertext-round">Round 1</h5>
         <h3 className="headertext-event">야구</h3>
+        <div className="resultimage-container">
+          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
+        </div>
         <div className="prompt-container">
           <h1 className="prompt-text">이길 것 같은 팀을</h1>
           <h1 className="prompt-text">선택해주세요</h1>
+        </div>
+        <div className="result-container">
+          <h4 className="result-text">&apos;연세대&apos;</h4>
+          <h4 className="result-text">승리</h4>
         </div>
       </div>
       <div className="body-container">
