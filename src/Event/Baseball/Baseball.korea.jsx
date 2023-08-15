@@ -38,7 +38,7 @@ export function BaseballKorea({ goNextEvent }) {
     }, 1000);
   };
 
-  const  yabaweeAnimation = () => {
+  const yabaweeAnimation = () => {
     anime({
       targets: '.left.cup',
       left: '75%',
@@ -61,7 +61,7 @@ export function BaseballKorea({ goNextEvent }) {
       var yonseiLogo = document.getElementById('yonsei-logo');
       yonseiLogo.src = "images/korea_logo.svg";
       var buttons = document.getElementsByClassName('button-container');
-      for (const button of buttons){
+      for (const button of buttons) {
         button.style.opacity = 1;
       }
 
@@ -124,9 +124,9 @@ export function BaseballKorea({ goNextEvent }) {
       duration: 1200,
       easing: 'easeOutExpo',
       complete: () => {
-        setTimeout(()=> {
-         goNextEvent();
-       }, 300);
+        setTimeout(() => {
+          goNextEvent();
+        }, 300);
       },
     });
     anime({
@@ -135,7 +135,7 @@ export function BaseballKorea({ goNextEvent }) {
       height: '330px',
       bottom: '45%',
       duration: 1200,
-      left:'77',
+      left: '77',
       easing: 'easeOutExpo',
     });
     anime({
@@ -149,7 +149,7 @@ export function BaseballKorea({ goNextEvent }) {
     anime({
       targets: '.ball-image',
       top: '80%',
-      left: '75%',
+      right: '75%',
       duration: 1200,
       easing: 'easeOutExpo',
     });
@@ -202,14 +202,14 @@ export function BaseballKorea({ goNextEvent }) {
       }
     })
   };
-  
+
   return (
     <div className="page-wrapper">
       <div className="header-container">
         <h3 className="headertext-round">Round2</h3>
         <h2 className="headertext-event">야구</h2>
         <div className="resultimage-container">
-         <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
+          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
         </div>
         <div className="prompt-container">
           <h1 className="prompt-text">이길 것 같은 팀을</h1>
@@ -227,8 +227,8 @@ export function BaseballKorea({ goNextEvent }) {
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
-         <div id="korea" className="univ-button" onClick={handleButtonClick}>
-           <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+          <div id="korea" className="univ-button" onClick={handleButtonClick}>
+            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
         <div className="button-container yonsei">
