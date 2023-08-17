@@ -10,6 +10,8 @@ import Tiger from "../Resource/tiger.svg"
 import Eagle from "../Resource/eagle.svg"
 import { conteffi } from "../App/App";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment } from "@fortawesome/free-solid-svg-icons";
 /**
  * 이벤트 결과 페이지입니다.
  * 이벤트 결과를 확인하고 (총 참여자 수) 카카오톡 공유하기를 할 수 있습니다.
@@ -51,22 +53,24 @@ export function Result({ univ, selectedUniv }) {
   }, []);
   return (
     <div className={`result_container ${univ == "KOREA" ? 'korea' : ''}`}>
-      <div className="result_title_totalCnt_container">
+      <div >
         <div className="result_title">
           <div><img src={Eagle} alt="eagle" height="100px" /></div>
           <div>투표현황</div>
           <div><img src={Tiger} alt="tiger" height="100px" /></div>
         </div>
         <div className="result_totalCnt">
-          <span className="result_yonseiCnt">{yonsei_participants}</span>
+          <span>{yonsei_participants}</span>
           <span className="result_versus"><img src={Lightening} /></span>
-          <span className="result_koreaCnt">{korea_participants}</span>
+          <span >{korea_participants}</span>
         </div>
       </div>
-      <span className="result_content">{`어차피 우승은 ${univ}!`}</span>
-      <img src={event} alt="soccer" />
-      <div>공유해서 우리 학교 응원하기</div>
-      <div className="result_shareBtn">{`친구에게 ${selectedUniv} 응원시키기`}</div>
-    </div>
+      <div className="result_img_share">
+        <span className="result_content"> {univ === "KOREA" ? "이번 고연전도 고려대 승!" : "이번에도 연세대 승...?"}</span>
+        <div className="result_img"><img src={event} alt="soccer" /></div>
+        <div className="result_shareText">공유해서 우리 학교 응원하기</div>
+        <div className="result_shareBtn"><FontAwesomeIcon icon={faComment} /> 카카오로 공유하기</div>
+      </div>
+    </div >
   )
 }

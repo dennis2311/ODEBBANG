@@ -5,6 +5,8 @@
   font-style: normal;
 }
 
+
+
 .result_container {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,11 @@
   background-color: #000B45;
   border: 1px solid black;
   background-color: #000B45;
+  color: white;
+
 }
+
+
 
 .result_container.korea {
   background-image: linear-gradient(#7C0415, #9E001600);
@@ -32,7 +38,18 @@
 }
 
 .result_content {
-  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.result_shareText {
+  margin: 20px;
+  text-align: center;
+}
+
+.result_img {
+  display: flex;
+  justify-content: center;
 }
 
 .result_shareBtn {
@@ -42,13 +59,14 @@
   background-color: #f8e431;
   padding: 16px 24px;
   border-radius: 8px;
+  text-align: center;
 }
 
 .result_totalCnt {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 80vh;
+  width: 85vw;
   height: 5vh;
   background: linear-gradient(90deg, rgba(0, 102, 255, 0.9) 0%, rgba(255, 0, 0, 0.9) 100%);
   border-radius: 40px;
@@ -58,25 +76,14 @@
   font-weight: 400;
 }
 
-/*  iPhone 12 */
-@media (max-width: 375px) {
-  .result_totalCnt {
-    font-size: 1.2rem;
-    width: 35vh;
-    height: 4vh;
-  }
-}
-
-.result_yonseiCnt {
-  color: white;
-  text-align: left;
-}
-
 .result_versus {
-  margin-left: auto;
+  width: 40px;
+  height: 5vh;
+  margin: 0 auto;
+
 }
 
-.result_koreaCnt {
-  color: white;
-  margin-left: auto;
+.result_img_share {
+  width: 70vw;
+  margin-top: 100px;
 }
