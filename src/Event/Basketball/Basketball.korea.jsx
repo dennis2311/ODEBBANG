@@ -79,11 +79,11 @@ export function BasketballKorea({ goNextEvent }) {
     <div className="page-wrapper">
       <div className="page-background">
         <h5 className="headertext-round">Round 2</h5>
-        <h3 className="headertext-event">야구</h3>
+        <h3 className="headertext-event">농구</h3>
       </div>
       <div className="header-container">
         <h5 className="headertext-round">Round 2</h5>
-        <h3 className="headertext-event">야구</h3>
+        <h3 className="headertext-event">농구</h3>
         <div className="resultimage-container">
           <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
         </div>
@@ -99,7 +99,7 @@ export function BasketballKorea({ goNextEvent }) {
       <div className="body-container">
         <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
         <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
-        <img className="ball-image" src="images/baseball-ball.svg" alt="야구공" />
+        <img className="ball-image" src="images/basketball-image.png" alt="농구공"/>
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
@@ -112,6 +112,7 @@ export function BasketballKorea({ goNextEvent }) {
             <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
           </div>
         </div>
+        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
       </div>
     </div>
   );
