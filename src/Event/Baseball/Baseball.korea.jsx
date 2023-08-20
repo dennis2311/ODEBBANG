@@ -149,7 +149,7 @@ export function BaseballKorea({ goNextEvent }) {
     anime({
       targets: '.ball-image',
       top: '80%',
-      right: '75%',
+      left: '73%',
       duration: 1200,
       easing: 'easeOutExpo',
     });
@@ -206,7 +206,7 @@ export function BaseballKorea({ goNextEvent }) {
   return (
     <div className="page-wrapper">
       <div className="header-container">
-        <h3 className="headertext-round">Round2</h3>
+        <h3 className="headertext-round">Round1</h3>
         <h2 className="headertext-event">야구</h2>
         <div className="resultimage-container">
           <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>

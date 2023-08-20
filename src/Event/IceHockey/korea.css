@@ -1,3 +1,10 @@
+div{
+    animation: flash 1s linear initial;
+}
+.move{
+    position: absolute;
+    visibility: hidden;
+}
 @font-face {
   font-family: "neurimboGothicRegular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")
@@ -174,42 +181,26 @@
   transform: translate(-50%, -50%);
 }
 
-.clicked-button2 {
-  animation-name: button_click;
-  animation-timing-function: ease-out;
+.clicked-button {
+  animation-name: button_scale;
+  animation-timing-function: linear;
   animation-fill-mode: forwards;
   animation-duration: 1s;
 }
 
-@keyframes button_click {
+@keyframes button_scale {
   0% {
-    transform: scale(1) rotate(0deg) translate(0px, 0px);
-    border-radius: 0;
-    opacity: 1;
-  }
-  20% {
-    transform: scale(0.6) rotate(120deg) translate(0px, 30px);
-    border-radius: 5px;
-    opacity: 0.8;
-  }
-  40% {
-    transform: scale(0.6) rotate(240deg) translate(0px, 60px);
-    border-radius: 10px;
-    opacity: 0.6;
-  }
-  60% {
-    transform: scale(0.6) rotate(360deg) translate(400px, 90px);
-    border-radius: 15px;
-    opacity: 0.4;
-  }
-  80% {
-    transform: scale(0.6) rotate(480deg) translate(-60px, 130px);
-    border-radius: 20px;
-    opacity: 0.2;
+    transform: scale(1,1);
   }
   100% {
-    transform: scale(0.6) rotate(600deg) translate(-120px, 130px);
-    border-radius: 20px;
-    opacity: 0;
+    transform: scale(0,0);
   }
+}
+@keyframes flash { 
+    0%,  95%,  98% {
+      background-color: #161855;
+    }
+    96%, 99%, 100% {
+      background-color:#fff;
+    }
 }
