@@ -1,18 +1,157 @@
-.result__title {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 56px;
+@font-face {
+  font-family: "neurimboGothicRegular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.result__content {
-  margin-bottom: 24px;
+
+
+.result_container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: #000B45;
+  border: 1px solid black;
+  background-color: #000B45;
+  color: white;
+
+
 }
 
-.result__shareBtn {
+
+
+.result_container.korea {
+  background-image: linear-gradient(#7C0415, #9E001600);
+}
+
+.result_title {
+  font-family: neurimboGothicRegular;
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.result_content {
+  display: flex;
+  justify-content: center;
+  font-family: neurimboGothicRegular;
+  font-size: 1.3rem;
+}
+
+.result_shareText {
+  margin: 20px;
+  text-align: center;
+  font-family: neurimboGothicRegular;
+}
+
+.result_img {
+  display: flex;
+  justify-content: center;
+}
+
+.result_shareBtn {
   font-size: 16px;
   font-weight: 700;
   color: #171601;
   background-color: #f8e431;
   padding: 16px 24px;
   border-radius: 8px;
+  text-align: center;
+}
+
+.result_totalCnt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 85vw;
+  height: 5vh;
+  background: linear-gradient(90deg, rgba(0, 102, 255, 0.9) 0%, rgba(255, 0, 0, 0.9) 100%);
+  border-radius: 40px;
+  padding: 20px;
+  font-family: neurimboGothicRegular;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.result_versus {
+  width: 40px;
+  height: 5vh;
+  margin: 0 auto;
+
+}
+
+.result_img_share {
+  width: 70vw;
+  margin-top: 100px;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+.win {
+  animation: jump 0.5s infinite;
+}
+
+.heart_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.add_heart {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.plus_one {
+  font-size: 30px;
+  color: #3f3f3f;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: fade-in-up;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+@keyframes fade-in-up {
+
+  0%,
+  10% {
+    top: 50%;
+    opacity: 1;
+  }
+
+  100% {
+    top: -100%;
+    opacity: 0;
+  }
 }
