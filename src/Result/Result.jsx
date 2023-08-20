@@ -1,5 +1,18 @@
+import { useEffect } from "react";
 import "./result.css";
-
+import YonseiResult from "../Resource/yonsei.png";
+import Soccer from "../Resource/soccer.svg";
+import Lightening from "../Resource/lightening.png"
+import Basketball from "../Resource/basketball.svg"
+import IceHockey from "../Resource/icehockey.svg"
+import Rugby from "../Resource/rugby.svg"
+import Tiger from "../Resource/tiger.svg"
+import Eagle from "../Resource/eagle.svg"
+import { conteffi } from "../App/App";
+import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 /**
  * 이벤트 결과 페이지입니다.
  * 이벤트 결과를 확인하고 (총 참여자 수) 카카오톡 공유하기를 할 수 있습니다.
@@ -7,13 +20,70 @@ import "./result.css";
  * @author 현웅
  */
 export function Result({ univ, selectedUniv }) {
+
+
+  const [event, setEvent] = useState(Soccer);
+  const [yonseiCnt, setYonseiCnt] = useState(11220);
+  const [koreaCnt, setKoreaCnt] = useState(11220);
+
+
+  const addConfetti = () => {
+    conteffi.addConfetti({
+      emojis: ["🐯", "🦅"],
+      emojiSize: 100,
+      confettiNumber: 30,
+    });
+  };
+  const getEvent = () => {
+    const randomValue = Math.random();
+
+    if (0 < randomValue <= 0.25) {
+      setEvent(Soccer);
+    }
+    else if (0.25 < randomValue <= 0.5) {
+      setEvent(Basketball);
+    }
+    else if (0.5 <= randomValue < 0.75) {
+      setEvent(IceHockey);
+    }
+    else {
+      setEvent(Rugby);
+    }
+  }
+  useEffect(() => {
+    addConfetti();
+    getEvent();
+    // const yonseiResult = axios.get("/api/getYonsei").then((response) => {
+    //   if (response) {
+    //     setYonseiCnt(yonseiResult);
+    //   }
+    // });
+    // const koreaResult = axios.get("/api/getKorea").then((response) => {
+    //   if (response) {
+    //     setKoreaCnt(koreaResult);
+    //   }
+    // });
+  }, []);
   return (
-    <div className="page-container">
-      <span className="result__title">결과 페이지</span>
-
-      <span className="result__content">{`어차피 우승은 ${univ}!`}</span>
-
-      <div className="result__shareBtn">{`친구에게 ${selectedUniv} 응원시키기`}</div>
-    </div>
-  );
+    <div className={`result_container ${univ == "KOREA" ? 'korea' : ''}`}>
+      <div >
+        <div className="result_title">
+          <div><img src={Eagle} alt="eagle" height="100px" /></div>
+          <div>투표현황</div>
+          <div><img src={Tiger} alt="tiger" height="100px" /></div>
+        </div>
+        <div className="result_totalCnt">
+          <span>{yonseiCnt}</span>
+          <span className="result_versus"><img src={Lightening} /></span>
+          <span >{koreaCnt}</span>
+        </div>
+      </div>
+      <div className="result_img_share">
+        <span className="result_content"> {univ === "KOREA" ? "이번 고연전도 고려대 승!" : "이번에도 연세대 승...?"}</span>
+        <div className="result_img"><img src={event} alt="soccer" /></div>
+        <div className="result_shareText">공유해서 우리 학교 응원하기</div>
+        <div className="result_shareBtn"><FontAwesomeIcon icon={faComment} /> 카카오로 공유하기</div>
+      </div>
+    </div >
+  )
 }
