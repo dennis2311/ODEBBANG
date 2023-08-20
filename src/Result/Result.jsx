@@ -12,6 +12,7 @@ import { conteffi } from "../App/App";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+// import axios from "axios";
 /**
  * 이벤트 결과 페이지입니다.
  * 이벤트 결과를 확인하고 (총 참여자 수) 카카오톡 공유하기를 할 수 있습니다.
@@ -20,9 +21,11 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
  */
 export function Result({ univ, selectedUniv }) {
 
-  const yonsei_participants = 11220;
-  const korea_participants = 11220;
+
   const [event, setEvent] = useState(Soccer);
+  const [yonseiCnt, setYonseiCnt] = useState(11220);
+  const [koreaCnt, setKoreaCnt] = useState(11220);
+
 
   const addConfetti = () => {
     conteffi.addConfetti({
@@ -50,6 +53,16 @@ export function Result({ univ, selectedUniv }) {
   useEffect(() => {
     addConfetti();
     getEvent();
+    // const yonseiResult = axios.get("/api/getYonsei").then((response) => {
+    //   if (response) {
+    //     setYonseiCnt(yonseiResult);
+    //   }
+    // });
+    // const koreaResult = axios.get("/api/getKorea").then((response) => {
+    //   if (response) {
+    //     setKoreaCnt(koreaResult);
+    //   }
+    // });
   }, []);
   return (
     <div className={`result_container ${univ == "KOREA" ? 'korea' : ''}`}>
@@ -60,9 +73,9 @@ export function Result({ univ, selectedUniv }) {
           <div><img src={Tiger} alt="tiger" height="100px" /></div>
         </div>
         <div className="result_totalCnt">
-          <span>{yonsei_participants}</span>
+          <span>{yonseiCnt}</span>
           <span className="result_versus"><img src={Lightening} /></span>
-          <span >{korea_participants}</span>
+          <span >{koreaCnt}</span>
         </div>
       </div>
       <div className="result_img_share">
