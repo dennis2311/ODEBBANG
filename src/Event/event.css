@@ -21,17 +21,5 @@
 }
 
 
-.zoomed {
-  transform: scale(3); /* You can adjust the scale value to zoom in further */
-  transition: transform 2s ease-in-out;
-}
-
-.event__message {
-  font-size: 30px; /* You can adjust the font size as per your preference */
-}
-
-.event__changed-message {
-  font-size: 0.01em; /* Adjust the font size to make the changed part smaller */
-}
 
 
