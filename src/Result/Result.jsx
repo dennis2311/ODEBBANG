@@ -12,6 +12,7 @@ import { conteffi } from "../App/App";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 /**
  * 이벤트 결과 페이지입니다.
@@ -24,7 +25,9 @@ export function Result({ univ, selectedUniv }) {
 
   const [event, setEvent] = useState(Soccer);
   const [yonseiCnt, setYonseiCnt] = useState(11220);
-  const [koreaCnt, setKoreaCnt] = useState(11220);
+  const [koreaCnt, setKoreaCnt] = useState(11221);
+  const [yonseiHeart, setYonseiHeart] = useState(false);
+  const [koreaHeart, setKoreaHeart] = useState(false);
 
 
   const addConfetti = () => {
@@ -50,6 +53,21 @@ export function Result({ univ, selectedUniv }) {
       setEvent(Rugby);
     }
   }
+
+
+  const handleHeartButtonClick = (heartType) => {
+    if (heartType === 'yonseiHeart') {
+      setYonseiHeart(true);
+      setTimeout(() => {
+        setYonseiHeart(false);
+      }, 1000);
+    } else if (heartType === 'koreaHeart') {
+      setKoreaHeart(true);
+      setTimeout(() => {
+        setKoreaHeart(false);
+      }, 1000);
+    }
+  };
   useEffect(() => {
     addConfetti();
     getEvent();
@@ -64,18 +82,33 @@ export function Result({ univ, selectedUniv }) {
     //   }
     // });
   }, []);
+  const koreaWin = koreaCnt > yonseiCnt;
+  const yonseiWin = koreaCnt < yonseiCnt;
+  const yesWin = !(koreaCnt == yonseiCnt)
+  const gradientStopPercent = (koreaCnt / (koreaCnt + yonseiCnt)) * 100;
+
   return (
     <div className={`result_container ${univ == "KOREA" ? 'korea' : ''}`}>
       <div >
         <div className="result_title">
-          <div><img src={Eagle} alt="eagle" height="100px" /></div>
+          <div className={yesWin ? koreaWin ? '' : 'win' : ''}><img src={Eagle} alt="eagle" height="100px" /></div>
           <div>투표현황</div>
-          <div><img src={Tiger} alt="tiger" height="100px" /></div>
+          <div className={yesWin ? koreaWin ? 'win' : '' : ''}><img src={Tiger} alt="tiger" height="100px" /></div>
         </div>
-        <div className="result_totalCnt">
+        <div className="result_totalCnt" style={{ '--gradient-stop-percent': `${gradientStopPercent}%` }}>
           <span>{yonseiCnt}</span>
           <span className="result_versus"><img src={Lightening} /></span>
           <span >{koreaCnt}</span>
+        </div>
+      </div>
+      <div className="heart_container">
+        <div className="add_heart" onClick={() => handleHeartButtonClick('yonseiHeart')}>
+          <FontAwesomeIcon icon={faHeart} />
+          {yonseiHeart && <span className="plus_one"> 💙+1</span>}
+        </div>
+        <div className="add_heart" onClick={() => handleHeartButtonClick('koreaHeart')}>
+          <FontAwesomeIcon icon={faHeart} />
+          {koreaHeart && <span className="plus_one"> ❤️+1</span>}
         </div>
       </div>
       <div className="result_img_share">
@@ -83,6 +116,9 @@ export function Result({ univ, selectedUniv }) {
         <div className="result_img"><img src={event} alt="soccer" /></div>
         <div className="result_shareText">공유해서 우리 학교 응원하기</div>
         <div className="result_shareBtn"><FontAwesomeIcon icon={faComment} /> 카카오로 공유하기</div>
+      </div>
+      <div>
+
       </div>
     </div >
   )
