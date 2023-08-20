@@ -19,14 +19,28 @@
 	background-position: 80% 50%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-    /* È®´ë/Ãà¼Ò ¾Ö´Ï¸ÞÀÌ¼Ç È¿°ú */
-    transition: all 0.3s ease-in-out;
+    /* È®ï¿½ï¿½/ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ È¿ï¿½ï¿½ */
+    transition: all 1.5s ease-in-out;
     transform-origin: top center;
-    transform: scale(1); /* ÃÊ±â Å©±â ¼³Á¤ */
+    transform: scale(1); /* ï¿½Ê±ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
 .page-wrapper.zoomed {
-    transform: scale(2); /* È®´ëµÈ Å©±â ¼³Á¤ */
+    transform: scale(2); /* È®ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+}
+
+.page-backgrounds {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 0;
+	background-image: linear-gradient(
+		180deg,
+		rgba(186, 33, 33, 0.83) 0%,
+		#450000 100%
+	);
+	background-size: "cover";
+	opacity: 0;
 }
 
 .headertext-round {
@@ -50,6 +64,36 @@
 	line-height: normal;
 }
 
+.resultimage-container {
+	margin-top: -150px;
+	margin-left: -60px;
+	position: absolute;
+}
+
+.result-image {
+	width: 380px;
+	height: 380px;
+	opacity: 0;
+}
+
+.result-container {
+	margin-top: -95px;
+	margin-left: 60px;
+	position: absolute;
+}
+
+.result-text {
+	color: #fff;
+	text-align: center;
+	font-family: neurimboGothicRegular;
+	font-size: 45px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	opacity: 0;
+}
+
+
 .prompt-container {
 	margin-top: 18px;
     
@@ -66,7 +110,7 @@
 	line-height: normal;
 }
 
-/* ... (±âÁ¸ ½ºÅ¸ÀÏ) ... */
+/* ... (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½) ... */
 
 .animated-text {
 	position: relative;
@@ -76,7 +120,7 @@
 }
   
 
-  /* ... (±âÁ¸ ½ºÅ¸ÀÏ) ... */
+  /* ... (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½) ... */
   
 
 .body-container {
