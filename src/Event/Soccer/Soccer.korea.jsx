@@ -76,11 +76,11 @@ export function SoccerKorea({ goNextEvent }) {
   return (
     <div className="page-wrapper">
       <div className="page-background">
-        <h5 className="headertext-round">Round 2</h5>
+        <h5 className="headertext-round">Round 5</h5>
         <h3 className="headertext-event">축구</h3>
       </div>
       <div className="header-container">
-        <h5 className="headertext-round">Round 2</h5>
+        <h5 className="headertext-round">Round 5</h5>
         <h3 className="headertext-event">축구</h3>
         <div className="resultimage-container">
           <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
