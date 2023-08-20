@@ -149,7 +149,7 @@ export function BaseballKorea({ goNextEvent }) {
     anime({
       targets: '.ball-image',
       top: '80%',
-      right: '75%',
+      left: '73%',
       duration: 1200,
       easing: 'easeOutExpo',
     });
