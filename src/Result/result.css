@@ -19,6 +19,7 @@
   background-color: #000B45;
   color: white;
 
+
 }
 
 
@@ -28,9 +29,9 @@
 }
 
 .result_title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: neurimboGothicRegular;
+  font-size: 1.5rem;
+  font-weight: 400;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -40,11 +41,14 @@
 .result_content {
   display: flex;
   justify-content: center;
+  font-family: neurimboGothicRegular;
+  font-size: 1.3rem;
 }
 
 .result_shareText {
   margin: 20px;
   text-align: center;
+  font-family: neurimboGothicRegular;
 }
 
 .result_img {
@@ -71,7 +75,7 @@
   background: linear-gradient(90deg, rgba(0, 102, 255, 0.9) 0%, rgba(255, 0, 0, 0.9) 100%);
   border-radius: 40px;
   padding: 20px;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: neurimboGothicRegular;
   font-size: 1.5rem;
   font-weight: 400;
 }
