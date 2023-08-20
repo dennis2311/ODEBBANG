@@ -1,122 +1,274 @@
-/**
- * 종목 - 축구 응원 화면 (연세대학교 강제 응원)
- * @author 현웅
- */
-import { useState } from "react";
 import "./soccer.css";
-import { easeInOut, motion } from "framer-motion"
+import anime from 'animejs';
+import { useState } from 'react';
 
 export function SoccerYonsei({ goNextEvent }) {
-  const variants = {
-    click: {
-      scale: [1, 0.6],
-      rotate: [0, 120, 240, 360, 480],
-      y: [0, 30, 60, 90, 130],
-      x: [0, 400, 0, -60, -120],
-      borderRadius: [0, 5, 10, 15, 20],
-    },
-    scaled_Y: {
-      scale: [1, 1.2],
-      y: [0, -30, 20],
-      x: [0, 0, -90],
-    },
-    scaled_K: {
-      scale: [1, 0.8],
-      y: [0, 40],
-      opacity: [1, 1, 0],
-    },
-    ball: {
-      y: [0, 0, 20],
-      x: [0, 0, -100],
-    },
-    yonsei_logo: {
-      x: [0, 0, -110],
-    },
-    korea_logo: {
-      opacity: [1, 1, 0],
-    },
-    lightning: {
-      opacity: [1, 1, 0],
-    },
+  const [gameStarted, setGameStarted] = useState(false);
+
+
+  // 고대/연대 버튼 누르면 야바위 게임 시작
+  const handleButtonClick = () => {
+    if (!gameStarted) startGame();
   };
 
-  const [clicked_K, koreaClicked] = useState(false);
-  const [clicked_Y, yonseiClicked] = useState(false);
+
+  // 야바위 게임 시작
+  const startGame = () => {
+    setGameStarted(true);
+
+    // 컵 등장, 0.3초 후 섞는 애니메이션 시작
+    // TODO: easing 변경
+    anime({
+      targets: '.cup',
+      top: '50%',
+      opacity: 1,
+      duration: 1000,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          yabaweeAnimation();
+        }, 300);
+      }
+    });
+
+    // 대학 로고 사라짐
+    setTimeout(() => {
+      var buttons = document.getElementsByClassName('button-container');
+      for (const button of buttons) {
+        button.style.opacity = 0;
+      }
+    }, 1000);
+  };
+
+
+  // 야바위 애니메이션
+  const yabaweeAnimation = () => {
+
+    // 왼쪽 컵
+    anime({
+      targets: '.left.cup',
+      left: '75%',
+      direction: 'alternate',
+      loop: 12,
+      easing: 'easeInOutSine',
+      duration: 200,
+    });
+
+    // 오른쪽 컵
+    anime({
+      targets: '.right.cup',
+      right: '75%',
+      direction: 'alternate',
+      loop: 12,
+      easing: 'easeInOutSine',
+      duration: 200,
+    });
+    // 왔다갔다 12번
+
+    setTimeout(() => {
+      // 섞는 애니메이션 끝나면 고대 -> 연세 이미지 변경하고 컵 뒤에 띄워놓기
+      var koreaLogo = document.getElementById('korea-logo');
+      koreaLogo.src = "images/yonsei_logo.svg";
+      var buttons = document.getElementsByClassName('button-container');
+      for (const button of buttons) {
+        button.style.opacity = 1;
+      }
+
+      // 컵에 클릭 리스너 등록
+      var leftCup = document.getElementsByClassName('left cup');
+      var rightCup = document.getElementsByClassName('right cup');
+      leftCup[0].addEventListener('click', () => handleCupClick('left'));
+      rightCup[0].addEventListener('click', () => handleCupClick('right'));
+    }, 12 * 200 + 500);
+  };
+
+
+  // 선택한 컵 먼저 공개, 1.5초 뒤 다른쪽 컵도 공개, 1초 뒤 연세대 승리!
+  const handleCupClick = (which) => {
+    if (which == 'left') {  // 왼쪽 컵 선택
+      anime({
+        targets: '.left.cup',
+        top: '-30%',
+        easing: 'easeOutExpo',
+        duration: 500,
+        complete: () => {
+          setTimeout(() => {
+            anime({
+              targets: '.right.cup',
+              top: '-30%',
+              easing: 'easeOutExpo',
+              duration: 500,
+              complete: () => {
+                setTimeout(handleYonseiVictory, 1000);
+              }
+            })
+          }, 1000);
+        }
+      });
+    } else {  // 오른쪽 컵 선택
+      anime({
+        targets: '.right.cup',
+        top: '-30%',
+        easing: 'easeOutExpo',
+        duration: 500,
+        complete: () => {
+          setTimeout(() => {
+            anime({
+              targets: '.left.cup',
+              top: '-30%',
+              easing: 'easeOutExpo',
+              duration: 500,
+              complete: () => {
+                setTimeout(handleYonseiVictory, 1000);
+              }
+            })
+          }, 1000);
+        }
+      });
+    }
+  };
+
+
+  // 게임 종료 후 호랑이 축소 & 독수리 확대 & 배경색 변경
+  const handleYonseiVictory = () => {
+
+    // 빨간색 배경 없애기
+    anime({
+      targets: '.page-wrapper',
+      backgroundPosition: '150% 300%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          goNextEvent();
+        }, 300);
+      },
+    });
+
+    // 파란색 그라데이션 배경 추가
+    anime({
+      targets: '.page-background',
+      opacity: 1,
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    //독수리
+    anime({
+      targets: '.eagle-image',
+      width: '240px',
+      height: '330px',
+      bottom: '45%',
+      right: '50%',
+      translateX: '50%',
+      translateY: '50%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    //호랑이
+    anime({
+      targets: '.tiger-image',
+      width: '0',
+      height: '0',
+      bottom: '45%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    anime({
+      targets: '.ball-image',
+      top: '80%',
+      left: '25%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    anime({
+      targets: '.prompt-text',
+      duration: 500,
+      easing: 'easeOutExpo',
+      opacity: 0,
+    });
+
+    anime({
+      targets: '.result-text',
+      duration: 1300,
+      easing: 'easeOutExpo',
+      opacity: 1,
+    });
+
+    anime({
+      targets: '.result-image',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      opacity: 1,
+    });
+
+    anime({
+      targets: '.resultimage-container',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      bottom: '40%',
+    });
+
+    anime({
+      targets: '.cup',
+      duration: 500,
+      easing: 'easeOutExpo',
+      width: 0,
+      height: 0,
+      opacity: 0,
+      complete: () => {
+        const cups = document.getElementsByClassName('.cup');
+        for (const cup of cups) {
+          cup.style.display = 'none';
+        }
+      }
+    });
+  };
+
 
   return (
-    <div className="container">
-      <div className="header">
-        <h1 className="round__title">Round 1</h1>
-        <h3 className="event__title">축구</h3>
+    <div className="page-wrapper">
+      <div className="page-background">
+        <h5 className="headertext-round">Round 1</h5>
+        <h3 className="headertext-event">축구</h3>
       </div>
-      <div className="title">
-        <h1 className="info_title">이길 것 같은 팀을<br/> 선택해주세요</h1>
-      </div>
-      <div className="character_container">
-        <motion.img
-          src="images/tiger.svg"
-          alt=""
-          className="tiger"
-          variants={variants}
-          animate={clicked_Y ? "scaled_K" : ""}
-          transition={{ duration: 2 }}
-        />
-        {/* <img src="images/tiger.svg" alt="" className="tiger"/> */}
-        <motion.img
-          src="images/soccerball.svg"
-          alt="" 
-          className="soccerball" 
-          variants={variants}
-          animate={clicked_Y ? "ball" : ""}
-          transition={{ duration: 2 }}  
-        />
-        {/* <img src="images/soccerball.svg" alt="" className="soccerball"/> */}
-        {/* <img src="images/eagle.svg" alt="" className="eagle"/> */}
-        <motion.img
-          src="images/eagle.svg"
-          alt=""
-          className="eagle"
-          variants={variants}
-          animate={clicked_Y ? "scaled_Y" : ""}
-          transition={{ duration: 2 }}
-        />
-      </div>
-      <div className="event__btnRow">
-        <div className="button_container">
-          <motion.button
-            className="rotating-button"
-            variants={variants}
-            id = "korea"
-            onClick={() => {
-              koreaClicked(true);
-            }}
-            
-            animate={clicked_K ? "click" : (clicked_Y ? "korea_logo" : "")}
-            transition={{ duration: 2, ease: easeInOut }}
-          >
-            <img src="images/korea_logo.svg" alt="고대" className="korea_logo"/>
-          </motion.button>
+      <div className="header-container">
+        <h5 className="headertext-round">Round 1</h5>
+        <h3 className="headertext-event">축구</h3>
+        <div className="resultimage-container">
+          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
         </div>
-        <motion.img
-          className="versus-icon"
-          src="images/lightning.png"
-          variants={variants}
-          animate={clicked_Y ? "lightning" : ""}
-          transition={{ duration: 2 }}
-        />
-        {/* <img className="versus-icon" src="images/lightning.png" alt="아이콘" /> */}
-        <div className="button_container" onClick={() => {yonseiClicked(true)}}>
-          <button id="yonsei">
-            <motion.img
-              className="yonsei_logo"
-              src="images/yonsei_logo.svg"
-              variants={variants}
-              animate={clicked_Y ? "yonsei_logo" : ""}
-              transition={{ duration: 2 }}
-            />
-            {/* <img src="images/yonsei_logo.svg" alt="연대" className="yonsei_logo"/> */}
-          </button>
+        <div className="prompt-container">
+          <h1 className="prompt-text">이길 것 같은 팀을</h1>
+          <h1 className="prompt-text">선택해주세요</h1>
         </div>
+        <div className="result-container">
+          <h4 className="result-text">&apos;연세대&apos;</h4>
+          <h4 className="result-text">승리</h4>
+        </div>
+      </div>
+      <div className="body-container">
+        <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
+        <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
+        <img className="ball-image" src="images/soccerball.svg" alt="축구공" />
+      </div>
+      <div className="buttons-container">
+        <div className="button-container korea">
+          <div id="korea" className="univ-button" onClick={handleButtonClick}>
+            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+          </div>
+        </div>
+        <div className="button-container yonsei">
+          <div id="yonsei" className="univ-button" onClick={handleButtonClick}>
+            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+          </div>
+        </div>
+        <img className="cup left" src="images/yabawee_cup.svg" />
+        <img className="cup right" src="images/yabawee_cup.svg" />
+        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
       </div>
     </div>
   );
