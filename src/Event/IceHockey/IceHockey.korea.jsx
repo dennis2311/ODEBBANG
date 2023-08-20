@@ -4,10 +4,12 @@
  */
 import { useEffect, useRef, useState } from 'react';
 import './korea.css';
+import anime from 'animejs';
 
 export function IceHockeyKorea({ goNextEvent }) {
   const [mouseX, setMouseX] = useState(500);
   const [mouseY, setMouseY] = useState(500);
+  const [isClicked, setIsClicked] = useState(false)
   const origin = useRef();
   const show = useRef();
 
@@ -25,7 +27,74 @@ export function IceHockeyKorea({ goNextEvent }) {
     show.current.style.visibility = "visible";
   }
 
-  console.log('효은 수정함');
+  const handleYonseiClick = () => {
+    setIsClicked(true);
+  };
+
+  const next = () => {
+    // 빨간색 배경 없애기
+    anime({
+      targets: '.page-wrapper',
+      backgroundSize: '200%',
+      backgroundPosition: '10% 10%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          goNextEvent();
+        }, 300);
+      },
+    });
+    anime({
+      targets: '.tiger-image',
+      width: '240px',
+      height: '330px',
+      bottom: '45%',
+      duration: 1200,
+      left: '77',
+      easing: 'easeOutExpo',
+    });
+    anime({
+      targets: '.eagle-image',
+      width: '0',
+      height: '0',
+      bottom: '45%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+    anime({
+      targets: '.ball-image',
+      top: '80%',
+      right: '75%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+    anime({
+      targets: '.prompt-text',
+      duration: 500,
+      easing: 'easeOutExpo',
+      opacity: 0,
+    })
+    anime({
+      targets: '.result-text',
+      duration: 1300,
+      easing: 'easeOutExpo',
+      opacity: 100,
+    })
+    anime({
+      targets: '.result-image',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      opacity: 100,
+    })
+    anime({
+      targets: '.resultimage-container',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      bottom: '40%',
+    })
+  };
+
   return (
     <div className="page-wrapper">
       <div className="page-background">
@@ -50,11 +119,11 @@ export function IceHockeyKorea({ goNextEvent }) {
       <div className="body-container">
         <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
         <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
-        <img className="ball-image" src="images/basketball-image.png" alt="농구공" />
+        <img className="ball-image" src="images/puck.svg" alt="퍽" />
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
-          <div id="korea" className="univ-button" onClick={goNextEvent}>
+          <div id="korea" className="univ-button" onClick={next}>
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
