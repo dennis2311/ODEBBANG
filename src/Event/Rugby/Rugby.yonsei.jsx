@@ -13,7 +13,7 @@ export function RugbyYonsei({ goNextEvent }) {
   const [isZoomed, setIsZoomed] = useState(false);
   const [isAlternateText, setIsAlternateText] = useState(false);
 
-  const handleZoomToText = () => {
+  const handleYonseiVictory = () => {
 
     // 빨간색 배경 없애기
     anime({
