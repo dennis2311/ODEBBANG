@@ -4,7 +4,7 @@
  */
 
 import { useRef, useState } from 'react';
-import "./Rugby.css";
+import "./RugbyYonsei.css";
 import anime from 'animejs';
 
 export function RugbyYonsei({ goNextEvent }) {
@@ -18,7 +18,7 @@ export function RugbyYonsei({ goNextEvent }) {
     // 빨간색 배경 없애기
     anime({
       targets: '.page-wrapper',
-      backgroundPosition: '300% 150%',
+      backgroundPosition: '150% 300%',
       duration: 1200,
       easing: 'easeOutExpo',
       complete: () => {
@@ -28,7 +28,7 @@ export function RugbyYonsei({ goNextEvent }) {
       },
     });
 
-    // 빨간색 그라데이션 배경 추가
+    // 파란색 그라데이션 배경 추가
     anime({
       targets: '.page-backgrounds',
       opacity: 1,
@@ -36,9 +36,9 @@ export function RugbyYonsei({ goNextEvent }) {
       easing: 'easeOutExpo',
     });
 
-    //호랑이
+    //독수리
     anime({
-      targets: '.tiger-image',
+      targets: '.eagle-image',
       width: '240px',
       height: '330px',
       bottom: '45%',
@@ -49,9 +49,9 @@ export function RugbyYonsei({ goNextEvent }) {
       easing: 'easeOutExpo',
     });
 
-    //독수리
+    //호랑이
     anime({
-      targets: '.eagle-image',
+      targets: '.tiger-image',
       width: '0',
       height: '0',
       bottom: '45%',
@@ -62,7 +62,7 @@ export function RugbyYonsei({ goNextEvent }) {
     anime({
       targets: '.ball-image',
       top: '80%',
-      left: '75%',
+      left: '25%',
       duration: 1200,
       easing: 'easeOutExpo',
     });
@@ -123,7 +123,7 @@ export function RugbyYonsei({ goNextEvent }) {
  
   };
 
-  const KoreaButtonClick = () => {
+  const YonseiButtonClick = () => {
     
     
     handleYonseiVictory();
@@ -156,7 +156,7 @@ export function RugbyYonsei({ goNextEvent }) {
           <h1 className="prompt-text">
             {isAlternateText ? (
               <span className="animated-text" style={{ transitionDelay: "0s" }}>
-                이길 것 같지 않은 팀을
+                이길 것 같지 <span className="underline-text">않은</span> 팀을
               </span>
             ) : (
               <span className="animated-text" style={{ transitionDelay: "0s" }}>
@@ -178,12 +178,12 @@ export function RugbyYonsei({ goNextEvent }) {
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
-          <div id="korea" className="univ-button" onClick={KoreaButtonClick}>
+          <div id="korea" className="univ-button" onClick={handleKoreaButtonClick}>
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
         <div className="button-container yonsei">
-          <div id="yonsei" className="univ-button" onClick={handleYonseiButtonClick}>
+          <div id="yonsei" className="univ-button" onClick={YonseiButtonClick}>
             <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
           </div>
         </div>
