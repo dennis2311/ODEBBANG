@@ -70,9 +70,9 @@ export function SoccerYonsei({ goNextEvent }) {
   useEffect(() => {
     let timer = setTimeout(() => {
       if (victory) {
-        console.log('move to share page');
+        goNextEvent();
       }
-    }, 3000)
+    }, 6000)
   }, [victory])
   return (
     <div className={`${changeBackground ? 'blue_container' : 'container'}`}>
