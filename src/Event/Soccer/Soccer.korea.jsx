@@ -1,53 +1,116 @@
-import { useState } from "react";
-import "./soccer.css";
-import { easeInOut, motion } from "framer-motion";
-
+import React, { useState } from 'react';
+import anime from 'animejs';
+import "./Soccer.css"
 
 export function SoccerKorea({ goNextEvent }) {
-  const variants = {
-    click: {
-      scale: [1, 1.2, 0.8, 1.1, 0.9, 1],
-      rotate: [0, 10, -10, 5, -5, 0],
-    },
+  
+  const [isClicked, setIsClicked] = useState(false)
+
+  const handleYonseiClick = () => {
+    setIsClicked(true);
   };
 
-  const [clicked, setClicked] = useState(false);
+  const handleYonseiVictory = () => {
+    anime({
+      targets: '.page-wrapper',
+      backgroundSize: '200%',
+      backgroundPosition: '10% 10%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          goNextEvent();
+        }, 300);
+      },
+    });
+    anime({
+      targets: '.tiger-image',
+      width: '240px',
+      height: '330px',
+      bottom: '45%',
+      duration: 1200,
+      left: '77',
+      easing: 'easeOutExpo',
+    });
+    anime({
+      targets: '.eagle-image',
+      width: '0',
+      height: '0',
+      bottom: '45%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+    anime({
+      targets: '.ball-image',
+      top: '80%',
+      right: '75%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+    anime({
+      targets: '.prompt-text',
+      duration: 500,
+      easing: 'easeOutExpo',
+      opacity: 0,
+    })
+    anime({
+      targets: '.result-text',
+      duration: 1300,
+      easing: 'easeOutExpo',
+      opacity: 100,
+    })
+    anime({
+      targets: '.result-image',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      opacity: 100,
+    })
+    anime({
+      targets: '.resultimage-container',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      bottom: '40%',
+    })
+  };
 
   return (
-    <div className="container">
-      <div className="header">
-        <h1 className="round__title">Round 1</h1>
-        <h3 className="event__title">축구</h3>
+    <div className="page-wrapper">
+      <div className="page-background">
+        <h5 className="headertext-round">Round 5</h5>
+        <h3 className="headertext-event">축구</h3>
       </div>
-      <div className="title">
-        <h1 className="info_title">이길 것 같은 팀을<br/> 선택해주세요</h1>
-      </div>
-      <div className="character_container">
-        <img src="images/tiger.svg" alt="" className="tiger"/>
-        {/* <img src="images/soccerball.svg" alt="" className="soccerball"/> */}
-        <img src="images/eagle.svg" alt="" className="eagle"/>
-      </div>
-      <div className="event__btnRow">
-        <div className="button_container">
-          <motion.button
-            className="bouncing-button"
-            variants={variants}
-            id="korea"
-            onClick={() => {
-              setClicked(true);
-            }}
-            animate={clicked ? "click" : ""}
-            transition={{ duration: 0.8, ease: easeInOut }}
-          >
-            <img src="images/korea_logo.svg" alt="고대" className="korea_logo"/>
-          </motion.button>
+      <div className="header-container">
+        <h5 className="headertext-round">Round 5</h5>
+        <h3 className="headertext-event">축구</h3>
+        <div className="resultimage-container">
+          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
         </div>
-        <img className="versus-icon" src="images/lightning.png" alt="아이콘" />
-        <div className="button_container">
-          <button id="yonsei" onClick={goNextEvent}>
-            <img src="images/yonsei_logo.svg" alt="연대" className="yonsei_logo"/>
-          </button>
+        <div className="prompt-container">
+          <h1 className="prompt-text">이길 것 같은 팀을</h1>
+          <h1 className="prompt-text">선택해주세요</h1>
         </div>
+        <div className="result-container">
+          <h4 className="result-text">&apos;고려대&apos;</h4>
+          <h4 className="result-text">승리</h4>
+        </div>
+      </div>
+      <div className="body-container">
+        <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
+        <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
+        <img className="ball-image" src="images/soccerball.svg" alt="축구공"/>
+      </div>
+      <div className="buttons-container">
+        <div className="button-container korea">
+          <div id="korea" className="univ-button" onClick={handleYonseiVictory}>
+            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+          </div>
+        </div>
+        <div className="button-container yonsei">
+          <div id="yonsei" className={`univ-button ${isClicked ? "clicked-button2" : ""}`} onClick={handleYonseiClick}>
+            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+          </div>
+        </div>
+        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
       </div>
     </div>
   );

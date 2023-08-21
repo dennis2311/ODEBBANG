@@ -2,22 +2,25 @@
  * 종목 - 축구 응원 화면 (연세대학교 강제 응원)
  * @author 현웅
  */
-import { useState } from "react";
-import "./soccer.css";
+import { useState, useEffect, React } from "react";
+import "./soccer_yonsei.css";
 import { easeInOut, motion } from "framer-motion"
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
+// import { Share } from "./Share";
 
 export function SoccerYonsei({ goNextEvent }) {
+  const { width, height } = useWindowSize();
   const variants = {
     click: {
       scale: [1, 0.6],
       rotate: [0, 120, 240, 360, 480],
       y: [0, 30, 60, 90, 130],
       x: [0, 400, 0, -60, -120],
-      borderRadius: [0, 5, 10, 15, 20],
     },
     scaled_Y: {
       scale: [1, 1.2],
-      y: [0, -30, 20],
+      y: [0, -30, 10],
       x: [0, 0, -90],
     },
     scaled_K: {
@@ -26,14 +29,15 @@ export function SoccerYonsei({ goNextEvent }) {
       opacity: [1, 1, 0],
     },
     ball: {
-      y: [0, 0, 20],
+      y: [0, 10, 20],
       x: [0, 0, -100],
     },
     yonsei_logo: {
-      x: [0, 0, -110],
+      x: [0, 0, -90],
+      y: [0, 0, 20],
     },
     korea_logo: {
-      opacity: [1, 1, 0],
+      opacity: [1, 0, 0],
     },
     lightning: {
       opacity: [1, 1, 0],
@@ -42,15 +46,61 @@ export function SoccerYonsei({ goNextEvent }) {
 
   const [clicked_K, koreaClicked] = useState(false);
   const [clicked_Y, yonseiClicked] = useState(false);
+  const [infoTitle_first, setInfoTitleFirst] = useState("이길 것 같은 팀을");
+  const [infoTitle_second, setInfoTitleSecond] = useState("선택해주세요");
+  const [changeBackground, setChangeBackground] = useState(false);
+  const [victory, setVictory] = useState(false);
 
+  useEffect (() => {
+    let timer = setTimeout(() => {
+      if (clicked_Y) {
+        setInfoTitleFirst("'연세대'");
+        setInfoTitleSecond("승리");
+        setChangeBackground(true);
+      }
+    }, 1700);
+  }, [clicked_Y])
+  useEffect (() => {
+    let timer = setTimeout(() => {
+      if (changeBackground) {
+        setVictory(true);
+      }
+    }, 1000)
+  }, [changeBackground])
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      if (victory) {
+        goNextEvent();
+      }
+    }, 6000)
+  }, [victory])
   return (
-    <div className="container">
+    <div className={`${changeBackground ? 'blue_container' : 'container'}`}>
+      {victory && (
+        <motion.img
+          className="congratulation"
+          src="images/congratulation.svg"
+          alt="승리 이미지"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+      )}
+      {victory && (
+        <Confetti
+            width={width}
+            height={height}
+        />
+      )}
       <div className="header">
-        <h1 className="round__title">Round 1</h1>
-        <h3 className="event__title">축구</h3>
+          <h1 className="round_title">Round 5</h1>
+          <h3 className="event_title">축구</h3>
       </div>
       <div className="title">
-        <h1 className="info_title">이길 것 같은 팀을<br/> 선택해주세요</h1>
+        <h1 className="info_title">
+          <p>{infoTitle_first}</p>
+          <p>{infoTitle_second}</p>
+        </h1>
       </div>
       <div className="character_container">
         <motion.img
@@ -61,7 +111,6 @@ export function SoccerYonsei({ goNextEvent }) {
           animate={clicked_Y ? "scaled_K" : ""}
           transition={{ duration: 2 }}
         />
-        {/* <img src="images/tiger.svg" alt="" className="tiger"/> */}
         <motion.img
           src="images/soccerball.svg"
           alt="" 
@@ -70,8 +119,6 @@ export function SoccerYonsei({ goNextEvent }) {
           animate={clicked_Y ? "ball" : ""}
           transition={{ duration: 2 }}  
         />
-        {/* <img src="images/soccerball.svg" alt="" className="soccerball"/> */}
-        {/* <img src="images/eagle.svg" alt="" className="eagle"/> */}
         <motion.img
           src="images/eagle.svg"
           alt=""
@@ -90,7 +137,7 @@ export function SoccerYonsei({ goNextEvent }) {
             onClick={() => {
               koreaClicked(true);
             }}
-            animate={clicked_K ? "click" : "", clicked_Y ? "korea_logo" : ""}
+            animate={[clicked_K ? "click" : "", clicked_Y ? "korea_logo" : ""]}
             transition={{ duration: 2, ease: easeInOut }}
           >
             <img src="images/korea_logo.svg" alt="고대" className="korea_logo"/>
@@ -103,7 +150,6 @@ export function SoccerYonsei({ goNextEvent }) {
           animate={clicked_Y ? "lightning" : ""}
           transition={{ duration: 2 }}
         />
-        {/* <img className="versus-icon" src="images/lightning.png" alt="아이콘" /> */}
         <div className="button_container" onClick={() => {yonseiClicked(true)}}>
           <button id="yonsei">
             <motion.img
@@ -112,8 +158,10 @@ export function SoccerYonsei({ goNextEvent }) {
               variants={variants}
               animate={clicked_Y ? "yonsei_logo" : ""}
               transition={{ duration: 2 }}
+              onClick={() => {
+                koreaClicked(false);
+              }}
             />
-            {/* <img src="images/yonsei_logo.svg" alt="연대" className="yonsei_logo"/> */}
           </button>
         </div>
       </div>

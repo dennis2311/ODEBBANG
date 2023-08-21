@@ -1,51 +1,194 @@
 /**
- * 종목 - 럭비 응원 화면 (고려대학교 강제 응원)
+ * 종목 - 럭비 응원 화면 (연세대학교 강제 응원)
  * @author 현웅
  */
-
 import { useRef, useState } from 'react';
+import "./Rugby.css";
+import anime from 'animejs';
 
 export function RugbyKorea({ goNextEvent }) {
   console.log('형진 수정');
+  const promptContainerRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [message, setMessage] = useState('이길 것 같은 팀은?');
+  const [isAlternateText, setIsAlternateText] = useState(false);
+  
+  const handleKoreaVictory = () => {
+
+    // 빨간색 배경 없애기
+    anime({
+      targets: '.page-wrapper',
+      backgroundPosition: '300% 150%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      complete: () => {
+        setTimeout(() => {
+          goNextEvent();
+        }, 300);
+      },
+    });
+
+    // 빨간색 그라데이션 배경 추가
+    anime({
+      targets: '.page-backgrounds',
+      opacity: 1,
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    //호랑이
+    anime({
+      targets: '.tiger-image',
+      width: '240px',
+      height: '330px',
+      bottom: '45%',
+      right: '50%',
+      translateX: '50%',
+      translateY: '50%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    //독수리
+    anime({
+      targets: '.eagle-image',
+      width: '0',
+      height: '0',
+      bottom: '45%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    anime({
+      targets: '.ball-image',
+      top: '80%',
+      left: '75%',
+      duration: 1200,
+      easing: 'easeOutExpo',
+    });
+
+    anime({
+      targets: '.prompt-text',
+      duration: 500,
+      easing: 'easeOutExpo',
+      opacity: 0,
+    });
+
+    anime({
+      targets: '.result-text',
+      duration: 1300,
+      easing: 'easeOutExpo',
+      opacity: 1,
+    });
+
+    anime({
+      targets: '.result-image',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      opacity: 1,
+    });
+
+    anime({
+      targets: '.resultimage-container',
+      duration: 1200,
+      easing: 'easeOutExpo',
+      bottom: '40%',
+    });
+
+    
+  };
+
+  const handleYonseiButtonClick = () => {
+    // Scroll to the "이길 것 같은 팀을" section
+    if (promptContainerRef.current) {
+      promptContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+      setIsZoomed(true);
+      setIsAlternateText(prev => !prev);
+      setTimeout(() => {
 
 
-  const handleZoomClick = () => {
-    setMessage(isZoomed);
-    setIsZoomed(!isZoomed);
+        // Zoom out the page
+        setIsZoomed(false);
+      }, 3000);
+      
+      setTimeout(() => {
+        handleKoreaVictory();
+      }, 5000);
+      
+      setTimeout(() => {
+        goNextEvent();
+      }, 8000);
+    };
+ 
+ 
+  };
+
+  const KoreaButtonClick = () => {
+    
+    
+    handleKoreaVictory();
+
     
     setTimeout(() => {
       goNextEvent();
-    }, 2000); 
+    }, 3000);
   };
 
-  
   return (
-    
-    <div className={`event container ${isZoomed ? 'zoomed' : ''}`}>
-
-      <p className="message">
-        <span className="event__message">
-          이길 것 같{''}
-          {isZoomed && <span className="event__changed-message">지 않</span>}
-        </span>
-        <span className="event__message">
-          은 팀은?
-        </span>
-      </p>
-      <h1 className="event__title">럭비</h1>
-
+    <div className={`page-wrapper ${isZoomed ? 'zoomed' : ''}`}>
       
+      <div className="page-backgrounds">
+        <h5 className="headertext-round">Round 4</h5>
+        <h3 className="headertext-event">럭비</h3>
+      </div>
 
-      <div className="event__btnRow">
-        <button id="korea" onClick={goNextEvent}>
-          고대
-        </button>
-        <button id="yonsei" onClick={handleZoomClick}>
-          연대ㅎㅎ
-        </button>
+      <div className="header-container">
+        <h5 className="headertext-round">Round 4</h5>
+        <h3 className="headertext-event">럭비</h3>
+        
+        <div className="resultimage-container">
+          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
+        </div>
+        
+        <div className="prompt-container" ref={promptContainerRef}>
+        
+
+          <h1 className="prompt-text">
+            {isAlternateText ? (
+              <span className="animated-text" style={{ transitionDelay: "0s" }}>
+                이길 것 같지 않은 팀을
+              </span>
+            ) : (
+              <span className="animated-text" style={{ transitionDelay: "0s" }}>
+                이길 것 같은 팀을
+              </span>
+            )}
+          </h1>
+          <h1 className="prompt-text">선택해주세요</h1>
+        </div>
+        <div className="result-container">
+          <h4 className="result-text">&apos;고려대&apos;</h4>
+          <h4 className="result-text">승리</h4>
+        </div>
+      </div>
+      <div className="body-container">
+        <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
+        <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
+        <img className="ball-image" src="images/rugby-ball.svg" alt="럭비공" />
+      </div>
+      <div className="buttons-container">
+        <div className="button-container korea">
+          <div id="korea" className="univ-button" onClick={KoreaButtonClick}>
+            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+          </div>
+        </div>
+        <div className="button-container yonsei">
+          <div id="yonsei" className="univ-button" onClick={handleYonseiButtonClick}>
+            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+          </div>
+        </div>
+        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
       </div>
     </div>
+    
   );
 }

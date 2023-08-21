@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+  
+@font-face {
+    font-family: "neurimboGothicRegular", "Apple SD Gothic Neo";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")
+    format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000B45;
+    color: white;
+    padding-top: 30px;
+    font-family: neurimboGothicRegular;
+}
+
+.header_vote {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header_text {
+    color: #FFF;
+    text-align: center;
+    font-family: neurimboGothicRegular;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.crop {
+    position: relative;
+    width: 88px;
+    height: 74px;
+}
+
+.crop img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(50, 50);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: auto;
+}
+
+.versus {
+    width: 85%;
+    height: 52px;   
+    border-radius: 26px;
+    border: none;
+    background-color: white;
+    margin-bottom: 10vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.versus_text {
+    color: #FFF;
+    font-family: neurimboGothicRegular;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.versus img {
+    width: 30px;
+    height: 50px;
+    margin: 0 10px;
+    margin-top: 5px;
+}
+
+.team {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body_text {
+    color: #FFF;
+    text-align: center;
+    font-family: neurimboGothicRegular;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.crop_soccer {
+    position: relative;
+    width: 360px;
+    height: 40vh;
+}
+
+.crop_soccer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(50, 50);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: auto;
+}
+
+.share {
+    position: absolute;
+    bottom: 8vh;
+}
+
+.share_text {
+    color: #FFF;
+    text-align: center;
+    font-family: neurimboGothicRegular;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 15px;
+}
+
+.share_kakao {
+    width: 260px;
+    height: 39px;
+    flex-shrink: 0;
+    background-color: #FEE500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.share_kakao_logo {
+    width: 15.21px;
+    height: 14.632px;
+    flex-shrink: 0;
+    margin: 12px;
+}
+
+.share_kakao_text {
+    color: #191919;
+    width: 100%;
+    font-family: Apple SD Gothic Neo;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
