@@ -33,7 +33,7 @@ export function SoccerYonsei({ goNextEvent }) {
       x: [0, 0, -100],
     },
     yonsei_logo: {
-      x: [0, 0, -110],
+      x: [0, 0, -90],
       y: [0, 0, 20],
     },
     korea_logo: {
