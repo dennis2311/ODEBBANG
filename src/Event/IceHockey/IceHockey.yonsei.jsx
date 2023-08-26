@@ -7,8 +7,25 @@ import './korea.css';
 import anime from 'animejs';
 
 export function IceHockeyYonsei({ goNextEvent }) {
-  const next = () => {
+  const [mouseX, setMouseX] = useState(500);
+  const [mouseY, setMouseY] = useState(500);
+  const origin = useRef();
+  const move = useRef();
 
+  useEffect(() => {
+    document.addEventListener('mousemove', function (e) {
+      setMouseX(getRandom(0, 300));
+      setMouseY(getRandom(0, 250));
+      console.log(mouseX, mouseY)
+      origin.current.style.display = "none";
+    }, false);
+  }, [])
+
+  const getRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  const next = () => {
+    move.current.style.display = "none";
     // 빨간색 배경 없애기
     anime({
       targets: '.page-wrapper',
@@ -138,8 +155,11 @@ export function IceHockeyYonsei({ goNextEvent }) {
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
-          <div id="korea" className="univ-button" onClick={onClick}>
+          <div ref={origin} id="korea">
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+          </div>
+          <div ref={move} id="korea2" className="move" style={{ top: mouseY - 600 + "px", right: mouseX - 230 + "px" }}>
+            <img id="korea-logo2" src="images/korea_logo.svg" alt="고대2" />
           </div>
         </div>
         <div className="button-container yonsei">

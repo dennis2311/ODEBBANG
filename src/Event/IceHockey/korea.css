@@ -1,10 +1,12 @@
 div{
     animation: flash 1s linear initial;
 }
+
 .move{
     position: absolute;
-    visibility: hidden;
+    z-index: 99;
 }
+
 @font-face {
   font-family: "neurimboGothicRegular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")
@@ -157,6 +159,7 @@ div{
 }
 
 .korea.button-container {
+  z-index: 999;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -168,6 +171,7 @@ div{
 
 .univ-button {
   background-color: transparent;
+  z-index: 11;
 }
 
 .univ-button:active {

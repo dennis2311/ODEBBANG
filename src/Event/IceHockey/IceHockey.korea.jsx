@@ -9,29 +9,24 @@ import anime from 'animejs';
 export function IceHockeyKorea({ goNextEvent }) {
   const [mouseX, setMouseX] = useState(500);
   const [mouseY, setMouseY] = useState(500);
-  const [isClicked, setIsClicked] = useState(false)
   const origin = useRef();
-  const show = useRef();
+  const move = useRef();
 
   useEffect(() => {
     document.addEventListener('mousemove', function (e) {
-      setMouseX(e.clientX);
-      setMouseY(e.clientY);
-      console.log(e.clientX, e.clientY)
+      setMouseX(getRandom(0, 300));
+      setMouseY(getRandom(0, 250));
+      console.log(mouseX, mouseY)
+      origin.current.style.display = "none";
     }, false);
   }, [])
 
-  const handleClick = () => {
-    console.log(origin.current)
-    origin.current.style.display = "none";
-    show.current.style.visibility = "visible";
+  const getRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  const handleYonseiClick = () => {
-    setIsClicked(true);
-  };
-
   const next = () => {
+    move.current.style.display = "none";
     // 빨간색 배경 없애기
     anime({
       targets: '.page-wrapper',
@@ -128,11 +123,11 @@ export function IceHockeyKorea({ goNextEvent }) {
           </div>
         </div>
         <div className="button-container yonsei">
-          <div ref={origin} id="yonsei" onClick={handleClick}>
+          <div ref={origin} id="yonsei">
             <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
           </div>
-          <div ref={show} id="yonsei" className="move" style={{ top: mouseY + 20 + "px", left: mouseX + 20 + "px" }}>
-            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+          <div ref={move} id="yonsei2" className="move" style={{ top: mouseY - 600 + "px", left: mouseX - 230 + "px" }}>
+            <img id="yonsei-logo2" src="images/yonsei_logo.svg" alt="연대2" />
           </div>
         </div>
         <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
