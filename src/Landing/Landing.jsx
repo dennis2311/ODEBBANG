@@ -22,7 +22,7 @@ export function Landing({ goNextPage, univ, setSelectedUniv }) {
       <div className="landing_title_image_container">
         <div className="landing_year_image_container">
           <img
-            src="src/Resource/2023-image.png"
+            src="images/2023-image.png"
             alt="2023-image"
             className="landing_year_image"
           />
@@ -30,13 +30,13 @@ export function Landing({ goNextPage, univ, setSelectedUniv }) {
         {univ === "KOREA" ? (
           <img
             className="landing_title_image"
-            src="src/Resource/odebbang-title-korea-image.png"
+            src="images/odebbang-title-korea-image.png"
             alt="odebbang-title-image"
           />
         ) : (
           <img
             className="landing_title_image"
-            src="src/Resource/odebbang-title-yonsei-image.png"
+            src="images/odebbang-title-yonsei-image.png"
             alt="odebbang-title-image"
           />
         )}
@@ -65,11 +65,7 @@ export function Landing({ goNextPage, univ, setSelectedUniv }) {
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
-        <img
-          className="lightning-icon"
-          src="images/lightning.png"
-          alt="아이콘"
-        />
+        <img className="lightning-icon" src="images/lightning.png" alt="번개" />
         <div className="button-container yonsei">
           <div id="yonsei" className="univ-button" onClick={onSelectYonsei}>
             <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
