@@ -153,18 +153,33 @@ export function BaseballKorea({ goNextEvent }) {
       duration: 1200,
       easing: "easeOutExpo",
     });
+
     anime({
       targets: ".prompt-text",
       duration: 500,
       easing: "easeOutExpo",
-      display: "none",
+      fontSize: "45px",
     });
-    anime({
-      targets: ".result-text",
-      duration: 1300,
-      easing: "easeOutExpo",
-      opacity: 100,
-    });
+
+    // anime({
+    //   targets: ".prompt-text",
+    //   duration: 500,
+    //   easing: "easeOutExpo",
+    //   display: "none",
+    // });
+    // anime({
+    //   targets: ".result-text",
+    //   duration: 1300,
+    //   easing: "easeOutExpo",
+    //   opacity: 100,
+    // });
+
+    // prompt-text의 텍스트를 '고려대 승리'로 변경
+    var firstText = document.querySelector(".prompt-text.first");
+    var secondText = document.querySelector(".prompt-text.second");
+    firstText.innerHTML = "&apos;고려대&apos;";
+    secondText.innerHTML = "승리";
+
     anime({
       targets: ".result-image",
       duration: 1200,
@@ -206,7 +221,7 @@ export function BaseballKorea({ goNextEvent }) {
   return (
     <div className="page-wrapper">
       <div className="header-container">
-        <h3 className="headertext-round">Round1</h3>
+        <h3 className="headertext-round">Round 1</h3>
         <h2 className="headertext-event">야구</h2>
         <div className="resultimage-container">
           <img
@@ -216,8 +231,8 @@ export function BaseballKorea({ goNextEvent }) {
           ></img>
         </div>
         <div className="prompt-container">
-          <h1 className="prompt-text">이길 것 같은 팀을</h1>
-          <h1 className="prompt-text">선택해주세요</h1>
+          <h1 className="prompt-text first">이길 것 같은 팀을</h1>
+          <h1 className="prompt-text second">선택해주세요</h1>
         </div>
         <div className="result-container">
           <h4 className="result-text">&apos;고려대&apos;</h4>
