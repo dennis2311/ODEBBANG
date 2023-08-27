@@ -187,7 +187,7 @@ export function BaseballKorea({ goNextEvent }) {
       opacity: 100,
     });
     anime({
-      targets: ".resultimage-container",
+      targets: ".result-image-container",
       duration: 1200,
       easing: "easeOutExpo",
       bottom: "40%",
@@ -223,7 +223,7 @@ export function BaseballKorea({ goNextEvent }) {
       <div className="header-container">
         <h3 className="headertext-round">Round 1</h3>
         <h2 className="headertext-event">야구</h2>
-        <div className="resultimage-container">
+        <div className="result-image-container">
           <img
             className="result-image"
             src="images/congratulation.svg"

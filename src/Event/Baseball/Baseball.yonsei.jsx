@@ -219,7 +219,7 @@ export function BaseballYonsei({ goNextEvent }) {
     });
 
     anime({
-      targets: ".resultimage-container",
+      targets: ".result-image-container",
       duration: 1200,
       easing: "easeOutExpo",
       bottom: "40%",
@@ -250,7 +250,7 @@ export function BaseballYonsei({ goNextEvent }) {
       <div className="header-container">
         <h5 className="headertext-round">Round 1</h5>
         <h3 className="headertext-event">야구</h3>
-        <div className="resultimage-container">
+        <div className="result-image-container">
           <img
             className="result-image"
             src="images/congratulation.svg"
