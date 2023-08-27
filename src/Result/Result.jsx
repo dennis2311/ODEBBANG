@@ -26,7 +26,7 @@ export function Result({ univ, selectedUniv }) {
 
 
   const [event, setEvent] = useState(Soccer);
-  const [yonseiCnt, setYonseiCnt] = useState(112200);
+  const [yonseiCnt, setYonseiCnt] = useState(11220);
   const [koreaCnt, setKoreaCnt] = useState(11221);
   const [yonseiHeart, setYonseiHeart] = useState(false);
   const [koreaHeart, setKoreaHeart] = useState(false);
@@ -93,9 +93,9 @@ export function Result({ univ, selectedUniv }) {
     <div className={`result_container ${univ == "KOREA" ? 'korea' : ''}`}>
       <div >
         <div className="result_title">
-          <div className={yesWin ? koreaWin ? '' : 'win' : ''}><img style={{ width: "90px", height: "100px" }} src={yesWin ? koreaWin ? YonseiLose : YonseiWin : YonseiWin} alt="eagle" /></div>
+          <div className={yesWin ? koreaWin ? '' : 'win' : ''}><img src={yesWin ? koreaWin ? YonseiLose : YonseiWin : YonseiWin} alt="eagle" /></div>
           <div>투표현황</div>
-          <div className={yesWin ? koreaWin ? 'win' : '' : ''}><img src={yesWin ? koreaWin ? KoreaWin : KoreaLose : KoreaWin} alt="tiger" style={{ width: "103px", height: "100px" }} /></div>
+          <div className={yesWin ? koreaWin ? 'win' : '' : ''}><img src={yesWin ? koreaWin ? KoreaWin : KoreaLose : KoreaWin} alt="tiger" /></div>
         </div>
         <div className="result_totalCnt" style={{ '--gradient-stop-percent': `${gradientStopPercent}%` }}>
           <span>{yonseiCnt}</span>
