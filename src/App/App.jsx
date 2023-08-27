@@ -1,8 +1,5 @@
-
-
 import { useState, useEffect } from "react";
 import { Content } from "./Content";
-import "./app.css";
 import JSConfetti from "js-confetti";
 
 /**
@@ -17,7 +14,6 @@ import JSConfetti from "js-confetti";
 export function App() {
   const [univ, setUniv] = useState();
 
-
   useEffect(() => {
     console.log("APP rendered");
     // const url = new URL(window.location.href);
@@ -26,7 +22,15 @@ export function App() {
   }, []);
 
   return (
-    <div className="app-container">
+    <div
+      className="app-container"
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "aliceblue",
+      }}
+    >
       {/* 디버깅을 쉽게 할 수 있도록 추가한 부분이며, 실제 배포에선 제거합니다. */}
       <span
         style={{ display: "flex", justifyContent: "center", padding: 8 }}
@@ -36,7 +40,5 @@ export function App() {
     </div>
   );
 }
-
-
 
 export const conteffi = new JSConfetti();
