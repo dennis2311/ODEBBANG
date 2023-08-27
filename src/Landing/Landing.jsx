@@ -19,7 +19,7 @@ export function Landing({ goNextPage, setSelectedUniv }) {
 
   return (
     <div className="page-container">
-      <span className="landing__title">랜딩 페이지</span>
+      <span className="landing__title">프로젝트 오대빵</span>
 
       <span className="landing__content">응원할 대학 선택하기</span>
 
