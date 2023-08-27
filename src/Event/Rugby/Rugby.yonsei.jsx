@@ -17,7 +17,7 @@ export function RugbyYonsei({ goNextEvent }) {
 
     // 빨간색 배경 없애기
     anime({
-      targets: '.page-wrapper',
+      targets: '.page-wrapper-Yonsei',
       backgroundPosition: '150% 300%',
       duration: 1200,
       easing: 'easeOutExpo',
@@ -30,7 +30,7 @@ export function RugbyYonsei({ goNextEvent }) {
 
     // 파란색 그라데이션 배경 추가
     anime({
-      targets: '.page-backgrounds',
+      targets: '.page-backgrounds-Yonsei',
       opacity: 1,
       duration: 1200,
       easing: 'easeOutExpo',
@@ -60,7 +60,7 @@ export function RugbyYonsei({ goNextEvent }) {
     });
 
     anime({
-      targets: '.ball-image',
+      targets: '.ball-image-Yonsei',
       top: '80%',
       left: '25%',
       duration: 1200,
@@ -137,7 +137,7 @@ export function RugbyYonsei({ goNextEvent }) {
   return (
     <div className={`page-wrapper ${isZoomed ? 'zoomed' : ''}`}>
       
-      <div className="page-backgrounds">
+      <div className="page-backgrounds-Yonsei">
         <h5 className="headertext-round">Round 4</h5>
         <h3 className="headertext-event">럭비</h3>
       </div>
@@ -174,7 +174,7 @@ export function RugbyYonsei({ goNextEvent }) {
       <div className="body-container">
         <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
         <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
-        <img className="ball-image" src="images/rugby-ball.svg" alt="럭비공" />
+        <img className="ball-image-Yonsei" src="images/rugby-ball.svg" alt="럭비공" />
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
