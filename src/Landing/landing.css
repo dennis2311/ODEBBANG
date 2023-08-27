@@ -1,17 +1,83 @@
-.landing__title {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 56px;
+@font-face {
+  font-family: "neurimboGothicRegular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.landing__content {
-  margin-bottom: 24px;
-}
-
-div.row {
+.landing-page-container {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000b45;
+  background-image: url("src/Resource/background-image.png");
+  background-size: 130%;
+  background-position: 80% 50%;
+  padding-top: 24px;
+}
+
+.title_image_container {
+  position: relative;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  padding-top: 16px;
+}
+
+.year_image_container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.year_image {
+  width: 30%;
+}
+
+.title_image {
+  width: 80%;
+  z-index: 10;
+}
+
+.event_description {
+  color: #fff;
+  text-align: center;
+  font-family: neurimboGothicRegular;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.character_images_container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.character-image {
+  position: absolute;
+  object-fit: cover;
+}
+
+.select_text {
+  color: #fff;
+  text-align: center;
+  font-family: neurimboGothicRegular;
+  font-size: 26px;
+  font-style: normal;
+}
+
+.buttons-container {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  margin-bottom: 10px;
 }
