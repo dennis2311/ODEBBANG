@@ -84,7 +84,7 @@ export function SoccerKorea({ goNextEvent }) {
         <div className="resultimage-container">
           <img
             className="result-image"
-            src="images/congratulation.svg"
+            src="src/Resource/congratulation.svg"
             alt="승리 이미지"
           ></img>
         </div>
@@ -100,20 +100,24 @@ export function SoccerKorea({ goNextEvent }) {
       <div className="body-container">
         <img
           className="character-image tiger-image"
-          src="images/tiger-character.svg"
+          src="src/Resource/tiger-character.svg"
           alt="호랑이 캐릭터"
         />
         <img
           className="character-image eagle-image"
-          src="images/eagle-character.svg"
+          src="src/Resource/eagle-character.svg"
           alt="독수리 캐릭터"
         />
-        <img className="ball-image" src="images/soccerball.svg" alt="축구공" />
+        <img
+          className="ball-image"
+          src="src/Resource/soccerball.svg"
+          alt="축구공"
+        />
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
           <div id="korea" className="univ-button" onClick={handleYonseiVictory}>
-            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+            <img id="korea-logo" src="src/Resource/korea_logo.svg" alt="고대" />
           </div>
         </div>
         <div className="button-container yonsei">
@@ -122,12 +126,16 @@ export function SoccerKorea({ goNextEvent }) {
             className={`univ-button ${isClicked ? "clicked-button2" : ""}`}
             onClick={handleYonseiClick}
           >
-            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+            <img
+              id="yonsei-logo"
+              src="src/Resource/yonsei_logo.svg"
+              alt="연대"
+            />
           </div>
         </div>
         <img
           className="lightning-icon"
-          src="images/lightning.png"
+          src="src/Resource/lightning.png"
           alt="아이콘"
         />
       </div>
