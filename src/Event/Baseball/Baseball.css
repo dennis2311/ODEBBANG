@@ -168,7 +168,7 @@
 }
 
 .cup {
-	z-index: 20;
+	z-index: 9999;
 	height: 160px;
 	position: absolute;
 	top: -30%;
