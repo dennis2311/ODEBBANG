@@ -31,11 +31,6 @@ export function App() {
         backgroundColor: "aliceblue",
       }}
     >
-      {/* 디버깅을 쉽게 할 수 있도록 추가한 부분이며, 실제 배포에선 제거합니다. */}
-      <span
-        style={{ display: "flex", justifyContent: "center", padding: 8 }}
-      >{`강제 응원 대학: ${univ === "KOREA" ? "고려대" : "연세대"}`}</span>
-
       <Content univ={univ} />
     </div>
   );
