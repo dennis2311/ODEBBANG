@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
-import anime from 'animejs';
-import "./Basketball.korea.css"
+import React, { useState } from "react";
+import anime from "animejs";
+import "./Basketball.korea.css";
 
 export function BasketballKorea({ goNextEvent }) {
-  
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleYonseiClick = () => {
     setIsClicked(true);
   };
 
   const handleYonseiVictory = () => {
-
     // 빨간색 배경 없애기
     anime({
-      targets: '.page-wrapper',
-      backgroundSize: '200%',
-      backgroundPosition: '10% 10%',
+      targets: ".page-wrapper",
+      backgroundSize: "200%",
+      backgroundPosition: "10% 10%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
       complete: () => {
         setTimeout(() => {
           goNextEvent();
@@ -26,53 +24,53 @@ export function BasketballKorea({ goNextEvent }) {
       },
     });
     anime({
-      targets: '.tiger-image',
-      width: '240px',
-      height: '330px',
-      bottom: '45%',
+      targets: ".tiger-image",
+      width: "240px",
+      height: "330px",
+      bottom: "45%",
       duration: 1200,
-      left: '77',
-      easing: 'easeOutExpo',
+      left: "77",
+      easing: "easeOutExpo",
     });
     anime({
-      targets: '.eagle-image',
-      width: '0',
-      height: '0',
-      bottom: '45%',
+      targets: ".eagle-image",
+      width: "0",
+      height: "0",
+      bottom: "45%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
     });
     anime({
-      targets: '.ball-image',
-      top: '80%',
-      right: '75%',
+      targets: ".ball-image",
+      top: "80%",
+      right: "75%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
     });
     anime({
-      targets: '.prompt-text',
+      targets: ".prompt-text",
       duration: 500,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
       opacity: 0,
-    })
+    });
     anime({
-      targets: '.result-text',
+      targets: ".result-text",
       duration: 1300,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
       opacity: 100,
-    })
+    });
     anime({
-      targets: '.result-image',
+      targets: ".result-image",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
       opacity: 100,
-    })
+    });
     anime({
-      targets: '.resultimage-container',
+      targets: ".resultimage-container",
       duration: 1200,
-      easing: 'easeOutExpo',
-      bottom: '40%',
-    })
+      easing: "easeOutExpo",
+      bottom: "40%",
+    });
   };
 
   return (
@@ -85,7 +83,11 @@ export function BasketballKorea({ goNextEvent }) {
         <h5 className="headertext-round">Round 2</h5>
         <h3 className="headertext-event">농구</h3>
         <div className="resultimage-container">
-          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
+          <img
+            className="result-image"
+            src="src/Resource/congratulation.svg"
+            alt="승리 이미지"
+          ></img>
         </div>
         <div className="prompt-container">
           <h1 className="prompt-text">이길 것 같은 팀을</h1>
@@ -97,22 +99,46 @@ export function BasketballKorea({ goNextEvent }) {
         </div>
       </div>
       <div className="body-container">
-        <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
-        <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
-        <img className="ball-image" src="images/basketball-image.png" alt="농구공"/>
+        <img
+          className="character-image tiger-image"
+          src="src/Resource/tiger-character.svg"
+          alt="호랑이 캐릭터"
+        />
+        <img
+          className="character-image eagle-image"
+          src="src/Resource/eagle-character.svg"
+          alt="독수리 캐릭터"
+        />
+        <img
+          className="ball-image"
+          src="src/Resource/basketball-image.png"
+          alt="농구공"
+        />
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
           <div id="korea" className="univ-button" onClick={handleYonseiVictory}>
-            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+            <img id="korea-logo" src="src/Resource/korea_logo.svg" alt="고대" />
           </div>
         </div>
         <div className="button-container yonsei">
-          <div id="yonsei" className={`univ-button ${isClicked ? "clicked-button" : ""}`} onClick={handleYonseiClick}>
-            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+          <div
+            id="yonsei"
+            className={`univ-button ${isClicked ? "clicked-button" : ""}`}
+            onClick={handleYonseiClick}
+          >
+            <img
+              id="yonsei-logo"
+              src="src/Resource/yonsei_logo.svg"
+              alt="연대"
+            />
           </div>
         </div>
-        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
+        <img
+          className="lightning-icon"
+          src="src/Resource/lightning.png"
+          alt="아이콘"
+        />
       </div>
     </div>
   );
