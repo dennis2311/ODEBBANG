@@ -6,8 +6,10 @@ import Lightening from "../Resource/lightening.png"
 import Basketball from "../Resource/basketball.svg"
 import IceHockey from "../Resource/icehockey.svg"
 import Rugby from "../Resource/rugby.svg"
-import Tiger from "../Resource/tiger.svg"
-import Eagle from "../Resource/eagle.svg"
+import KoreaLose from "../Resource/KoreaLose.svg"
+import YonseiLose from "../Resource/YonseiLose.svg"
+import KoreaWin from "../Resource/KoreaWin.svg"
+import YonseiWin from "../Resource/YonseiWin.svg"
 import { conteffi } from "../App/App";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -24,7 +26,7 @@ export function Result({ univ, selectedUniv }) {
 
 
   const [event, setEvent] = useState(Soccer);
-  const [yonseiCnt, setYonseiCnt] = useState(11220);
+  const [yonseiCnt, setYonseiCnt] = useState(112200);
   const [koreaCnt, setKoreaCnt] = useState(11221);
   const [yonseiHeart, setYonseiHeart] = useState(false);
   const [koreaHeart, setKoreaHeart] = useState(false);
@@ -91,9 +93,9 @@ export function Result({ univ, selectedUniv }) {
     <div className={`result_container ${univ == "KOREA" ? 'korea' : ''}`}>
       <div >
         <div className="result_title">
-          <div className={yesWin ? koreaWin ? '' : 'win' : ''}><img src={Eagle} alt="eagle" height="100px" /></div>
+          <div className={yesWin ? koreaWin ? '' : 'win' : ''}><img style={{ width: "90px", height: "100px" }} src={yesWin ? koreaWin ? YonseiLose : YonseiWin : YonseiWin} alt="eagle" /></div>
           <div>투표현황</div>
-          <div className={yesWin ? koreaWin ? 'win' : '' : ''}><img src={Tiger} alt="tiger" height="100px" /></div>
+          <div className={yesWin ? koreaWin ? 'win' : '' : ''}><img src={yesWin ? koreaWin ? KoreaWin : KoreaLose : KoreaWin} alt="tiger" style={{ width: "103px", height: "100px" }} /></div>
         </div>
         <div className="result_totalCnt" style={{ '--gradient-stop-percent': `${gradientStopPercent}%` }}>
           <span>{yonseiCnt}</span>
