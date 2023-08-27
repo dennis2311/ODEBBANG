@@ -18,48 +18,48 @@ export function Landing({ goNextPage, univ, setSelectedUniv }) {
   }
 
   return (
-    <div className="landing-page-container">
-      <div className="title_image_container">
-        <div className="year_image_container">
+    <div className="landing_page_container">
+      <div className="landing_title_image_container">
+        <div className="landing_year_image_container">
           <img
             src="src/Resource/2023-image.png"
             alt="2023-image"
-            className="year_image"
+            className="landing_year_image"
           />
         </div>
         {univ === "KOREA" ? (
           <img
-            className="title_image"
+            className="landing_title_image"
             src="src/Resource/odebbang-title-korea-image.png"
             alt="odebbang-title-image"
           />
         ) : (
           <img
-            className="title_image"
+            className="landing_title_image"
             src="src/Resource/odebbang-title-yonsei-image.png"
             alt="odebbang-title-image"
           />
         )}
       </div>
 
-      <span className="event_description">정기전 승부 예측 이벤트</span>
+      <span className="landing_event_description">정기전 승부 예측 이벤트</span>
 
-      <div className="character_images_container">
+      <div className="landing_character_images_container">
         <img
-          className="character-image tiger-image"
+          className="landing_character_image"
           src="images/tiger-character.svg"
           alt="호랑이 캐릭터"
         ></img>
         <img
-          className="character-image eagle-image"
+          className="landing_character_image"
           src="images/eagle-character.svg"
           alt="독수리 캐릭터"
         ></img>
       </div>
 
-      <span className="select_text">응원할 대학을 선택해주세요</span>
+      <span className="landing_select_text">응원할 대학을 선택해주세요</span>
 
-      <div className="buttons-container">
+      <div className="landing_buttons_container">
         <div className="button-container korea">
           <div id="korea" className="univ-button" onClick={onSelectKorea}>
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
