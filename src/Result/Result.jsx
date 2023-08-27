@@ -26,7 +26,7 @@ export function Result({ univ, selectedUniv }) {
 
 
   const [event, setEvent] = useState(Soccer);
-  const [yonseiCnt, setYonseiCnt] = useState(11220);
+  const [yonseiCnt, setYonseiCnt] = useState(112200);
   const [koreaCnt, setKoreaCnt] = useState(11221);
   const [yonseiHeart, setYonseiHeart] = useState(false);
   const [koreaHeart, setKoreaHeart] = useState(false);
