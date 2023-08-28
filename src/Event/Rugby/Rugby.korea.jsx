@@ -61,7 +61,7 @@ export function RugbyKorea({ goNextEvent }) {
     anime({
       targets: '.ball-image',
       top: '80%',
-      left: '75%',
+      right: '75%',
       duration: 1200,
       easing: 'easeOutExpo',
     });

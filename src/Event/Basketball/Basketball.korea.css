@@ -6,7 +6,7 @@
   font-style: normal;
 }
 
-.page-wrapper {
+.page-wrapper-basketball {
   width: 100%;
   height: 100%;
   display: flex;
@@ -14,14 +14,14 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #000b45;
-  background-image: url("images/background-image.png");
+  background-image: url("src/Resource/background-image.png");
   background-size: 130%;
   background-position: 80% 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.page-background {
+.page-background-basketball {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -35,7 +35,7 @@
   opacity: 0;
 }
 
-.headertext-round {
+.headertext-round-basketball {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -46,7 +46,7 @@
   margin-top: 10px;
 }
 
-.headertext-event {
+.headertext-event-basketball {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -56,25 +56,25 @@
   line-height: normal;
 }
 
-.resultimage-container {
+.resultimage-container-basketball {
   margin-top: -150px;
   margin-left: -60px;
   position: absolute;
 }
 
-.result-image {
+.result-image-basketball {
   width: 380px;
   height: 380px;
   opacity: 0;
 }
 
-.result-container {
+.result-container-basketball {
   margin-top: -95px;
   margin-left: 60px;
   position: absolute;
 }
 
-.result-text {
+.result-text-basketball {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -85,11 +85,11 @@
   opacity: 0;
 }
 
-.prompt-container {
+.prompt-container-basketball {
   margin-top: 18px;
 }
 
-.prompt-text {
+.prompt-text-basketball {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -99,14 +99,14 @@
   line-height: normal;
 }
 
-.body-container {
+.body-container-basketball {
   flex-grow: 1;
   width: 100%;
   display: flex;
   position: relative;
 }
 
-.character-image {
+.character-image-basketball {
   width: 192px;
   height: 264px;
   position: absolute;
@@ -114,15 +114,15 @@
   transform: translate(0, 50%);
 }
 
-.tiger-image {
+.tiger-image-basketball {
   left: 0;
 }
 
-.eagle-image {
+.eagle-image-basketball {
   right: 0;
 }
 
-.ball-image {
+.ball-image-basketball {
   width: 119px;
   height: 119px;
   position: absolute;
@@ -131,14 +131,14 @@
   transform: translate(-50%, -50%);
 }
 
-.buttons-container {
+.buttons-container-basketball {
   width: 100%;
   height: 160px;
   position: relative;
   margin-bottom: 10px;
 }
 
-.button-container {
+.button-container-basketball {
   position: absolute;
   z-index: 10;
   top: 50%;
@@ -149,25 +149,25 @@
   align-items: center;
 }
 
-.korea.button-container {
+.korea.button-container-basketball {
   left: 25%;
   transform: translate(-50%, -50%);
 }
 
-.yonsei.button-container {
+.yonsei.button-container-basketball {
   right: 25%;
   transform: translate(50%, -50%);
 }
 
-.univ-button {
+.univ-button-basketball {
   background-color: transparent;
 }
 
-.univ-button:active {
+.univ-button-basketball:active {
   opacity: 60%;
 }
 
-.lightning-icon {
+.lightning-icon-basketball {
   position: absolute;
   top: 55%;
   left: 50%;
@@ -183,9 +183,9 @@
 
 @keyframes button_scale {
   0% {
-    transform: scale(1,1);
+    transform: scale(1, 1);
   }
   100% {
-    transform: scale(0,0);
+    transform: scale(0, 0);
   }
 }
