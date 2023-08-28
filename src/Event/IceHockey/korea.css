@@ -2,6 +2,12 @@
     position: absolute;
     z-index: 99;
 }
+
+.primary{
+  position:absolute;
+	z-index: 999;
+}
+
 @font-face {
   font-family: "neurimboGothicRegular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")

@@ -15,7 +15,7 @@ export function IceHockeyKorea({ goNextEvent }) {
   useEffect(() => {
     document.addEventListener('mousemove', function (e) {
       setMouseX(getRandom(0, 300));
-      setMouseY(getRandom(0, 250));
+      setMouseY(getRandom(0, 650));
       console.log(mouseX, mouseY)
       origin.current.style.display = "none";
     }, false);
@@ -134,7 +134,7 @@ export function IceHockeyKorea({ goNextEvent }) {
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
-          <div id="korea" className="univ-button" onClick={next}>
+          <div id="korea" className="univ-button primary" onClick={next}>
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
