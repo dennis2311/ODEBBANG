@@ -30,84 +30,80 @@ export function IceHockeyKorea({ goNextEvent }) {
 
     // 빨간색 배경 없애기
     anime({
-      targets: '.page-wrapper',
-      backgroundPosition: '300% 150%',
+      targets: ".page-wrapper",
+      backgroundSize: "200%",
+      backgroundPosition: "10% 10%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
       complete: () => {
         setTimeout(() => {
           goNextEvent();
         }, 300);
       },
     });
-
-    // 빨간색 그라데이션 배경 추가
     anime({
-      targets: '.page-backgrounds',
-      opacity: 1,
+      targets: ".tiger-image",
+      width: "240px",
+      height: "330px",
+      bottom: "45%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      left: "77",
+      easing: "easeOutExpo",
     });
-
-    //호랑이
     anime({
-      targets: '.tiger-image',
-      width: '240px',
-      height: '330px',
-      bottom: '45%',
-      right: '50%',
-      translateX: '50%',
-      translateY: '50%',
+      targets: ".eagle-image",
+      width: "0",
+      height: "0",
+      bottom: "45%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
     });
-
-    //독수리
     anime({
-      targets: '.eagle-image',
-      width: '0',
-      height: '0',
-      bottom: '45%',
+      targets: ".ball-image",
+      top: "80%",
+      left: "75%",
       duration: 1200,
-      easing: 'easeOutExpo',
+      easing: "easeOutExpo",
     });
 
     anime({
-      targets: '.ball-image',
-      top: '80%',
-      left: '75%',
-      duration: 1200,
-      easing: 'easeOutExpo',
-    });
-
-    anime({
-      targets: '.prompt-text',
+      targets: ".prompt-text",
       duration: 500,
-      easing: 'easeOutExpo',
-      opacity: 0,
+      easing: "easeOutExpo",
+      fontSize: "45px",
     });
 
-    anime({
-      targets: '.result-text',
-      duration: 1300,
-      easing: 'easeOutExpo',
-      opacity: 1,
-    });
+    // anime({
+    //   targets: ".prompt-text",
+    //   duration: 500,
+    //   easing: "easeOutExpo",
+    //   display: "none",
+    // });
+    // anime({
+    //   targets: ".result-text",
+    //   duration: 1300,
+    //   easing: "easeOutExpo",
+    //   opacity: 100,
+    // });
+
+    // prompt-text의 텍스트를 '고려대 승리'로 변경
+    var firstText = document.querySelector(".prompt-text.first");
+    var secondText = document.querySelector(".prompt-text.second");
+    firstText.innerHTML = "&apos;고려대&apos;";
+    secondText.innerHTML = "승리";
 
     anime({
-      targets: '.result-image',
+      targets: ".result-image",
       duration: 1200,
-      easing: 'easeOutExpo',
-      opacity: 1,
+      easing: "easeOutExpo",
+      opacity: 100,
     });
-
     anime({
-      targets: '.resultimage-container',
+      targets: ".result-image-container",
       duration: 1200,
-      easing: 'easeOutExpo',
-      bottom: '40%',
+      easing: "easeOutExpo",
+      bottom: "40%",
     });
-
   };
 
   return (
@@ -119,12 +115,12 @@ export function IceHockeyKorea({ goNextEvent }) {
       <div className="header-container">
         <h5 className="headertext-round">Round 3</h5>
         <h3 className="headertext-event">빙구</h3>
-        <div className="resultimage-container">
+        <div className="result-image-container">
           <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
         </div>
         <div className="prompt-container">
-          <h1 className="prompt-text">이길 것 같은 팀을</h1>
-          <h1 className="prompt-text">선택해주세요</h1>
+          <h1 className="prompt-text first">이길 것 같은 팀을</h1>
+          <h1 className="prompt-text second">선택해주세요</h1>
         </div>
         <div className="result-container">
           <h4 className="result-text">&apos;고려대&apos;</h4>
