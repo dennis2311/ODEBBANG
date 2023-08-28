@@ -1,10 +1,11 @@
-div {
-  animation: flash 1s linear initial;
+.move{
+    position: absolute;
+    z-index: 99;
 }
 
-.move {
-  position: absolute;
-  z-index: 99;
+.primary{
+  position:absolute;
+	z-index: 999;
 }
 
 @font-face {
@@ -44,6 +45,11 @@ div {
   opacity: 0;
 }
 
+.header-container {
+  width: 100%;
+  height: 160px;
+}
+
 .headertext-round {
   color: #fff;
   text-align: center;
@@ -65,15 +71,16 @@ div {
   line-height: normal;
 }
 
-.resultimage-container {
+.result-image-container {
   margin-top: -150px;
-  margin-left: -60px;
   position: absolute;
+  width: 100%;
 }
 
 .result-image {
   width: 380px;
   height: 380px;
+  margin: auto;
   opacity: 0;
 }
 
@@ -159,7 +166,6 @@ div {
 }
 
 .korea.button-container {
-  z-index: 999;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -171,11 +177,28 @@ div {
 
 .univ-button {
   background-color: transparent;
-  z-index: 11;
 }
 
 .univ-button:active {
   opacity: 60%;
+}
+
+.cup {
+  z-index: 9999;
+  height: 160px;
+  position: absolute;
+  top: -30%;
+  opacity: 0;
+}
+
+.left.cup {
+  left: 25%;
+  transform: translate(-60%, -50%);
+}
+
+.right.cup {
+  right: 25%;
+  transform: translate(40%, -50%);
 }
 
 .lightning-icon {
@@ -183,32 +206,4 @@ div {
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.clicked-button {
-  animation-name: button_scale;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-duration: 1s;
-}
-
-@keyframes button_scale {
-  0% {
-    transform: scale(1, 1);
-  }
-  100% {
-    transform: scale(0, 0);
-  }
-}
-@keyframes flash {
-  0%,
-  95%,
-  98% {
-    background-color: #161855;
-  }
-  96%,
-  99%,
-  100% {
-    background-color: #fff;
-  }
 }
