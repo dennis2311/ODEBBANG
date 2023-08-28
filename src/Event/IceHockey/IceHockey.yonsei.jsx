@@ -26,10 +26,11 @@ export function IceHockeyYonsei({ goNextEvent }) {
   }
   const next = () => {
     move.current.style.display = "none";
+
     // 빨간색 배경 없애기
     anime({
       targets: '.page-wrapper',
-      backgroundPosition: '150% 300%',
+      backgroundPosition: '300% 150%',
       duration: 1200,
       easing: 'easeOutExpo',
       complete: () => {
@@ -39,17 +40,17 @@ export function IceHockeyYonsei({ goNextEvent }) {
       },
     });
 
-    // 파란색 그라데이션 배경 추가
+    // 빨간색 그라데이션 배경 추가
     anime({
-      targets: '.page-background',
+      targets: '.page-backgrounds',
       opacity: 1,
       duration: 1200,
       easing: 'easeOutExpo',
     });
 
-    //독수리
+    //호랑이
     anime({
-      targets: '.eagle-image',
+      targets: '.tiger-image',
       width: '240px',
       height: '330px',
       bottom: '45%',
@@ -60,9 +61,9 @@ export function IceHockeyYonsei({ goNextEvent }) {
       easing: 'easeOutExpo',
     });
 
-    //호랑이
+    //독수리
     anime({
-      targets: '.tiger-image',
+      targets: '.eagle-image',
       width: '0',
       height: '0',
       bottom: '45%',
@@ -73,7 +74,7 @@ export function IceHockeyYonsei({ goNextEvent }) {
     anime({
       targets: '.ball-image',
       top: '80%',
-      left: '25%',
+      left: '75%',
       duration: 1200,
       easing: 'easeOutExpo',
     });
@@ -106,20 +107,6 @@ export function IceHockeyYonsei({ goNextEvent }) {
       bottom: '40%',
     });
 
-    anime({
-      targets: '.cup',
-      duration: 500,
-      easing: 'easeOutExpo',
-      width: 0,
-      height: 0,
-      opacity: 0,
-      complete: () => {
-        const cups = document.getElementsByClassName('.cup');
-        for (const cup of cups) {
-          cup.style.display = 'none';
-        }
-      }
-    });
 
   };
 
@@ -130,11 +117,11 @@ export function IceHockeyYonsei({ goNextEvent }) {
   return (
     <div className="page-wrapper">
       <div className="page-background">
-        <h5 className="headertext-round">Round 5</h5>
+        <h5 className="headertext-round">Round 3</h5>
         <h3 className="headertext-event">빙구</h3>
       </div>
       <div className="header-container">
-        <h5 className="headertext-round">Round 5</h5>
+        <h5 className="headertext-round">Round 3</h5>
         <h3 className="headertext-event">빙구</h3>
         <div className="resultimage-container">
           <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
