@@ -15,10 +15,9 @@ export function App() {
   const [univ, setUniv] = useState();
 
   useEffect(() => {
-    console.log("APP rendered");
-    // const url = new URL(window.location.href);
-    // const univ = url.searchParams.get("univ");
-    Math.random() < 0.5 ? setUniv("KOREA") : setUniv("YONSEI");
+    const code = new URL(window.location.href).search.replace("?code=", "");
+    if (code === "KOREA" || code === "YONSEI") setUniv(code);
+    else setUniv(Math.random() > 0.5 ? "KOREA" : "YONSEI");
   }, []);
 
   return (
