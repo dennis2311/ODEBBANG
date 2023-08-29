@@ -107,28 +107,46 @@ export function BaseballKorea({ goNextEvent }) {
               easing: "easeOutExpo",
               duration: 500,
               complete: () => {
+<<<<<<< HEAD
+                setTimeout(handleKoreaVictory, 1000)
+                setTimeout(handleKoreaPage, 550)
+              }
+            })
+=======
                 setTimeout(handleKoreaVictory, 1000);
               },
             });
+>>>>>>> c734861006c0e661af491bdc8f8987789c9637d2
           }, 1000);
         },
       });
     }
   };
 
-  const handleKoreaVictory = () => {
+  const handleKoreaPage = () => {
     anime({
+<<<<<<< HEAD
+      targets: '.page-wrapper',
+      backgroundSize: '350%',
+      backgroundPosition: '40% 30%',
+      duration: 0.000000001,
+      easing: 'easeOutExpo',
+=======
       targets: ".page-wrapper",
       backgroundSize: "200%",
       backgroundPosition: "10% 10%",
       duration: 1200,
       easing: "easeOutExpo",
+>>>>>>> c734861006c0e661af491bdc8f8987789c9637d2
       complete: () => {
         setTimeout(() => {
           goNextEvent();
-        }, 300);
+        }, 1949.999999);
       },
     });
+  };
+
+const handleKoreaVictory = () => {
     anime({
       targets: ".tiger-image",
       width: "240px",
