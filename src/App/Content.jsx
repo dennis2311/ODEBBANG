@@ -12,7 +12,7 @@ export function Content({ univ }) {
   /** 현재 보여줄 페이지를 정하는 상태값 */
   const [page, setPage] = useState("LANDING");
   /** 사용자가 선택한 대학을 저장하는 상태값 */
-  const [selectedUniv, setSelectedUniv] = useState();  // 내가 선택한 대학, 함수 
+  const [selectedUniv, setSelectedUniv] = useState(); // 내가 선택한 대학
 
   /** 이벤트에서 사용할 페이지들 */
   const allPages = ["LANDING", "EVENT", "RESULT"];
@@ -32,7 +32,11 @@ export function Content({ univ }) {
   switch (page) {
     case "LANDING":
       return (
-        <Landing goNextPage={goNextPage} setSelectedUniv={setSelectedUniv} />
+        <Landing
+          goNextPage={goNextPage}
+          univ={univ}
+          setSelectedUniv={setSelectedUniv}
+        />
       );
     case "EVENT":
       return <Event univ={univ} goNextPage={goNextPage} />;
