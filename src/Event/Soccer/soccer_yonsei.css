@@ -93,10 +93,10 @@
   .tiger {
     position: absolute;
     width: 280px;
-    height: 52vh;
+    height: 42vh;
     z-index: 1;
     left: -80px;
-    top: -60px;
+    top: -15px;
     overflow: hidden;
   }
   
