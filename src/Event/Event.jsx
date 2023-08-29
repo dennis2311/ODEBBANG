@@ -11,10 +11,11 @@ import "./event.css";
  * @author 현웅
  */
 export function Event({ univ, goNextPage }) {
-  const [event, setEvent] = useState("BASEBALL");
+  const [event, setEvent] = useState("BASKETBALL");
 
   /** 정기전에서 치뤄지는 모든 종목들입니다. */
-  const allEvents = ["BASEBALL", "BASKETBALL", "ICEHOCKEY", "RUGBY", "SOCCER"];
+  const allEvents = ["BASKETBALL", "SOCCER"]
+  //const allEvents = ["BASEBALL", "BASKETBALL", "ICEHOCKEY", "RUGBY", "SOCCER"];
 
   /**
    * 다음 종목 선택 페이지로 이동합니다.
