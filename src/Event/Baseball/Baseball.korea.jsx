@@ -117,17 +117,17 @@ export function BaseballKorea({ goNextEvent }) {
       targets: ".page-wrapper",
       backgroundSize: "350%",
       backgroundPosition: "40% 30%",
-      duration: 0.000000001,
+      duration: 500,
       easing: "easeOutExpo",
       complete: () => {
         setTimeout(() => {
           goNextEvent();
-        }, 1949.999999);
+       }, 1500);
       },
     });
   };
 
-  const handleKoreaVictory = () => {
+const handleKoreaVictory = () => {
     anime({
       targets: ".tiger-image",
       width: "240px",
