@@ -101,7 +101,7 @@ export function Result({ univ, selectedUniv }) {
     axios
       .request({
         method: "POST",
-        url: "http://3.34.198.39",
+        url: "https://server.odebbang.com",
         data: {
           sharedBy: univ,
           university: selectedUniv,

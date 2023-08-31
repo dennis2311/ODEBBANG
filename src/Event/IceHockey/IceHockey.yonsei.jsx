@@ -22,6 +22,9 @@ export function IceHockeyYonsei({ goNextEvent }) {
       },
       false
     );
+    return () => {
+      document.removeEventListener("mousemove", () => {});
+    };
   }, []);
 
   const getRandom = (min, max) => {
