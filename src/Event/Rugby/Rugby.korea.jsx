@@ -15,7 +15,8 @@ export function RugbyKorea({ goNextEvent }) {
     // 빨간색 배경 없애기
     anime({
       targets: ".page-wrapper",
-      backgroundPosition: "300% 150%",
+      backgroundSize: "200%",
+      backgroundPosition: "10% 10%",
       duration: 1200,
       easing: "easeOutExpo",
       complete: () => {
@@ -25,28 +26,15 @@ export function RugbyKorea({ goNextEvent }) {
       },
     });
 
-    // 빨간색 그라데이션 배경 추가
-    anime({
-      targets: ".page-backgrounds",
-      opacity: 1,
-      duration: 1200,
-      easing: "easeOutExpo",
-    });
-
-    //호랑이
     anime({
       targets: ".tiger-image",
       width: "240px",
       height: "330px",
       bottom: "45%",
-      right: "50%",
-      translateX: "50%",
-      translateY: "50%",
       duration: 1200,
+      left: "77",
       easing: "easeOutExpo",
     });
-
-    //독수리
     anime({
       targets: ".eagle-image",
       width: "0",
@@ -55,11 +43,10 @@ export function RugbyKorea({ goNextEvent }) {
       duration: 1200,
       easing: "easeOutExpo",
     });
-
     anime({
       targets: ".ball-image",
       top: "80%",
-      right: "75%",
+      left: "75%",
       duration: 1200,
       easing: "easeOutExpo",
     });
@@ -68,25 +55,23 @@ export function RugbyKorea({ goNextEvent }) {
       targets: ".prompt-text",
       duration: 500,
       easing: "easeOutExpo",
-      opacity: 0,
+      fontSize: "45px",
     });
 
-    anime({
-      targets: ".result-text",
-      duration: 1300,
-      easing: "easeOutExpo",
-      opacity: 1,
-    });
+    var firstText = document.querySelector(".prompt-text.first");
+    var secondText = document.querySelector(".prompt-text.second");
+    firstText.innerHTML = "&apos;고려대&apos;";
+    secondText.innerHTML = "승리";
 
     anime({
       targets: ".result-image",
       duration: 1200,
       easing: "easeOutExpo",
-      opacity: 1,
+      opacity: 100,
     });
 
     anime({
-      targets: ".resultimage-container",
+      targets: ".result-image-container",
       duration: 1200,
       easing: "easeOutExpo",
       bottom: "40%",
@@ -124,7 +109,7 @@ export function RugbyKorea({ goNextEvent }) {
 
   return (
     <div className={`page-wrapper ${isZoomed ? "zoomed" : ""}`}>
-      <div className="page-backgrounds">
+      <div className="page-background">
         <h5 className="headertext-round">Round 4</h5>
         <h3 className="headertext-event">럭비</h3>
       </div>
@@ -133,7 +118,7 @@ export function RugbyKorea({ goNextEvent }) {
         <h5 className="headertext-round">Round 4</h5>
         <h3 className="headertext-event">럭비</h3>
 
-        <div className="resultimage-container">
+        <div className="result-image-container">
           <img
             className="result-image"
             src="images/congratulation.svg"
@@ -142,10 +127,10 @@ export function RugbyKorea({ goNextEvent }) {
         </div>
 
         <div className="prompt-container" ref={promptContainerRef}>
-          <h1 className="prompt-text">
+          <h1 className="prompt-text first">
             {isAlternateText ? (
               <span className="animated-text" style={{ transitionDelay: "0s" }}>
-                이길 것 같지 않은 팀을
+                이길 것 같지 <span className="underline-text">않은</span> 팀을
               </span>
             ) : (
               <span className="animated-text" style={{ transitionDelay: "0s" }}>
@@ -153,7 +138,7 @@ export function RugbyKorea({ goNextEvent }) {
               </span>
             )}
           </h1>
-          <h1 className="prompt-text">선택해주세요</h1>
+          <h1 className="prompt-text second">선택해주세요</h1>
         </div>
         <div className="result-container">
           <h4 className="result-text">&apos;고려대&apos;</h4>
