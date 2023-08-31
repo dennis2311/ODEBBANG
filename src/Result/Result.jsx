@@ -94,7 +94,6 @@ export function Result({ univ, selectedUniv }) {
   };
 
   useEffect(() => {
-    console.log("Result.jsx rendered");
     Kakao.cleanup();
     Kakao.init("95a71b26f6664ca2b4b55cdff266eb37");
     addConfetti();

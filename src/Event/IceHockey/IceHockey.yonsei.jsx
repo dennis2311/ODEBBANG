@@ -2,9 +2,9 @@
  * 종목 - 아이스하키 응원 화면 (연세대학교 강제 응원)
  * @author 현웅
  */
-import { useEffect, useRef, useState } from 'react';
-import './korea.css';
-import anime from 'animejs';
+import { useEffect, useRef, useState } from "react";
+import "./korea.css";
+import anime from "animejs";
 
 export function IceHockeyYonsei({ goNextEvent }) {
   const [mouseX, setMouseX] = useState(500);
@@ -13,18 +13,21 @@ export function IceHockeyYonsei({ goNextEvent }) {
   const move = useRef();
 
   useEffect(() => {
-    document.addEventListener('mousemove', function (e) {
-      setMouseX(getRandom(0, 300));
-      setMouseY(getRandom(0, 650));
-      console.log(mouseX, mouseY)
-      origin.current.style.display = "none";
-    }, false);
-  }, [])
+    document.addEventListener(
+      "mousemove",
+      function (e) {
+        setMouseX(getRandom(0, 300));
+        setMouseY(getRandom(0, 650));
+        origin.current.style.display = "none";
+      },
+      false
+    );
+  }, []);
 
   const getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  
+  };
+
   const next = () => {
     move.current.style.display = "none";
     // 빨간색 배경 없애기
@@ -131,7 +134,11 @@ export function IceHockeyYonsei({ goNextEvent }) {
         <h5 className="headertext-round">Round 3</h5>
         <h3 className="headertext-event">빙구</h3>
         <div className="result-image-container">
-          <img className="result-image" src="images/congratulation.svg" alt="승리 이미지"></img>
+          <img
+            className="result-image"
+            src="images/congratulation.svg"
+            alt="승리 이미지"
+          ></img>
         </div>
         <div className="prompt-container">
           <h1 className="prompt-text first">이길 것 같은 팀을</h1>
@@ -143,8 +150,16 @@ export function IceHockeyYonsei({ goNextEvent }) {
         </div>
       </div>
       <div className="body-container">
-        <img className="character-image tiger-image" src="images/tiger-character.svg" alt="호랑이 캐릭터" />
-        <img className="character-image eagle-image" src="images/eagle-character.svg" alt="독수리 캐릭터" />
+        <img
+          className="character-image tiger-image"
+          src="images/tiger-character.svg"
+          alt="호랑이 캐릭터"
+        />
+        <img
+          className="character-image eagle-image"
+          src="images/eagle-character.svg"
+          alt="독수리 캐릭터"
+        />
         <img className="ball-image" src="images/puck.svg" alt="퍽" />
       </div>
       <div className="buttons-container">
@@ -152,7 +167,12 @@ export function IceHockeyYonsei({ goNextEvent }) {
           <div ref={origin} id="korea">
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
-          <div ref={move} id="korea2" className="move" style={{ top: mouseY - 600 + "px", right: mouseX - 230 + "px" }}>
+          <div
+            ref={move}
+            id="korea2"
+            className="move"
+            style={{ top: mouseY - 600 + "px", right: mouseX - 230 + "px" }}
+          >
             <img id="korea-logo2" src="images/korea_logo.svg" alt="고대2" />
           </div>
         </div>
@@ -161,7 +181,11 @@ export function IceHockeyYonsei({ goNextEvent }) {
             <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
           </div>
         </div>
-        <img className="lightning-icon" src="images/lightning.png" alt="아이콘" />
+        <img
+          className="lightning-icon"
+          src="images/lightning.png"
+          alt="아이콘"
+        />
       </div>
     </div>
   );
