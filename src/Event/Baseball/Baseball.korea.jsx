@@ -103,7 +103,7 @@ export function BaseballKorea({ goNextEvent }) {
               duration: 500,
               complete: () => {
                 setTimeout(handleKoreaVictory, 1000);
-                setTimeout(handleKoreaPage, 550);
+                //setTimeout(handleKoreaPage, 550);
               },
             });
           }, 1000);
@@ -112,22 +112,35 @@ export function BaseballKorea({ goNextEvent }) {
     }
   };
 
-  const handleKoreaPage = () => {
-    anime({
-      targets: ".page-wrapper",
-      backgroundSize: "350%",
-      backgroundPosition: "40% 30%",
-      duration: 500,
-      easing: "easeOutExpo",
-      complete: () => {
-        setTimeout(() => {
-          goNextEvent();
-       }, 1500);
-      },
-    });
-  };
+  //const handleKoreaPage = () => {
+    //anime({
+      //targets: ".page-wrapper",
+      //backgroundSize: "350%",
+   //   backgroundPosition: "40% 30%",
+     // duration: 500,
+      //easing: "easeOutExpo",
+      //complete: () => {
+      //  setTimeout(() => {
+      //    goNextEvent();
+      // }, 1500);
+      //},
+   // });
+  //};
 
 const handleKoreaVictory = () => {
+    anime({
+      targets: ".page-wrapper",
+      backgroundSize: "500%",
+      backgroundPosition: "50% 30%",
+      duration: 100,
+      easing: "easeOutExpo",
+      complete: () => {
+       setTimeout(() => {
+        goNextEvent();
+        }, 1500);
+      },
+    });
+
     anime({
       targets: ".tiger-image",
       width: "240px",
