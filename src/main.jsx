@@ -9,8 +9,4 @@ import "./global.div.css";
  * 우리가 만든 <App /> 컴포넌트를 HTML 문서의 root 요소에 렌더링합니다.
  * @author 현웅
  */
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

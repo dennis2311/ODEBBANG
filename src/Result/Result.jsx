@@ -15,8 +15,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import axios from "axios";
 const { Kakao } = window;
-//import axios from "axios";
 /**
  * 이벤트 결과 페이지입니다.
  * 이벤트 결과를 확인하고 (총 참여자 수) 카카오톡 공유하기를 할 수 있습니다.
@@ -25,8 +25,8 @@ const { Kakao } = window;
  */
 export function Result({ univ, selectedUniv }) {
   const [event, setEvent] = useState(Soccer);
-  const [yonseiCnt, setYonseiCnt] = useState(112200);
-  const [koreaCnt, setKoreaCnt] = useState(11221);
+  const [yonseiCount, setYonseiCount] = useState(112200);
+  const [koreaCount, setKoreaCount] = useState(11221);
   const [yonseiHeart, setYonseiHeart] = useState(false);
   const [koreaHeart, setKoreaHeart] = useState(false);
 
@@ -72,7 +72,9 @@ export function Result({ univ, selectedUniv }) {
       objectType: "feed",
       content: {
         title: "2023 정기전의 승자는?",
-        description: isKoreaStudent ? "고려대? 연세대?" : "연세대? 고려대?",
+        description: isKoreaStudent
+          ? `고려대? 연세대?\n${yonseiCount + koreaCount}명이 참여했어요!`
+          : `연세대? 고려대?\n${yonseiCount + koreaCount}명이 참여했어요!`,
         imageUrl: isKoreaStudent
           ? "https://i.imgur.com/7x1aMwZ.png"
           : "https://i.imgur.com/IgFRknr.png",
@@ -92,25 +94,29 @@ export function Result({ univ, selectedUniv }) {
   };
 
   useEffect(() => {
+    console.log("Result.jsx rendered");
     Kakao.cleanup();
     Kakao.init("95a71b26f6664ca2b4b55cdff266eb37");
     addConfetti();
     getEvent();
-    // const yonseiResult = axios.get("/api/getYonsei").then((response) => {
-    //   if (response) {
-    //     setYonseiCnt(yonseiResult);
-    //   }
-    // });
-    // const koreaResult = axios.get("/api/getKorea").then((response) => {
-    //   if (response) {
-    //     setKoreaCnt(koreaResult);
-    //   }
-    // });
+    axios
+      .request({
+        method: "POST",
+        url: "http://3.34.198.39",
+        data: {
+          sharedBy: univ,
+          university: selectedUniv,
+        },
+      })
+      .then((res) => {
+        const { korea, yonsei } = res.data;
+        setKoreaCount(korea);
+        setYonseiCount(yonsei);
+      });
   }, []);
-  const koreaWin = koreaCnt > yonseiCnt;
-  const yonseiWin = koreaCnt < yonseiCnt;
-  const yesWin = !(koreaCnt == yonseiCnt);
-  const gradientStopPercent = (koreaCnt / (koreaCnt + yonseiCnt)) * 100;
+  const koreaWin = koreaCount > yonseiCount;
+  const yesWin = !(koreaCount == yonseiCount);
+  const gradientStopPercent = (koreaCount / (koreaCount + yonseiCount)) * 100;
 
   return (
     <div className={`result_container ${univ == "KOREA" ? "korea" : ""}`}>
@@ -134,15 +140,15 @@ export function Result({ univ, selectedUniv }) {
           className="result_totalCnt"
           style={{ "--gradient-stop-percent": `${gradientStopPercent}%` }}
         >
-          <span>{yonseiCnt}</span>
+          <span>{yonseiCount}</span>
           <span className="result_versus">
             <img src={Lightening} />
           </span>
-          <span>{koreaCnt}</span>
+          <span>{koreaCount}</span>
         </div>
       </div>
       <div className="heart_container">
-        <div
+        {/* <div
           className="add_heart"
           onClick={() => handleHeartButtonClick("yonseiHeart")}
         >
@@ -155,20 +161,28 @@ export function Result({ univ, selectedUniv }) {
         >
           <FontAwesomeIcon icon={faHeart} />
           {koreaHeart && <span className="plus_one"> ❤️+1</span>}
-        </div>
+        </div> */}
       </div>
       <div className="result_img_share">
         <span className="result_content">
           {" "}
-          {univ === "KOREA"
-            ? "이번 고연전도 고려대 승!"
-            : "이번에도 연세대 승...?"}
+          {selectedUniv === "KOREA"
+            ? koreaWin
+              ? "이번 고연전도 고려대 우승!"
+              : "이대로 연세대 우승..?"
+            : koreaWin
+            ? "이대로 고려대 우승...?"
+            : "이번 연고전도 연세대 우승!"}
         </span>
         <div className="result_img">
           <img src={event} alt="soccer" />
         </div>
         <div className="result_shareText">공유해서 우리 학교 응원하기</div>
-        <div className="result_shareBtn" onClick={onPressKakaoShare}>
+        <div
+          className="result_shareBtn"
+          onClick={onPressKakaoShare}
+          onTouchEnd={onPressKakaoShare}
+        >
           <FontAwesomeIcon icon={faComment} /> 카카오로 공유하기
         </div>
       </div>
