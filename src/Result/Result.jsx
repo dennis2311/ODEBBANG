@@ -25,8 +25,8 @@ const { Kakao } = window;
  */
 export function Result({ univ, selectedUniv }) {
   const [event, setEvent] = useState(Soccer);
-  const [yonseiCount, setYonseiCount] = useState(112200);
-  const [koreaCount, setKoreaCount] = useState(11221);
+  const [yonseiCount, setYonseiCount] = useState(100);
+  const [koreaCount, setKoreaCount] = useState(100);
   const [yonseiHeart, setYonseiHeart] = useState(false);
   const [koreaHeart, setKoreaHeart] = useState(false);
 
@@ -177,13 +177,9 @@ export function Result({ univ, selectedUniv }) {
           <img src={event} alt="soccer" />
         </div>
         <div className="result_shareText">공유해서 우리 학교 응원하기</div>
-        <div
-          className="result_shareBtn"
-          onClick={onPressKakaoShare}
-          onTouchEnd={onPressKakaoShare}
-        >
+        <button className="result_shareBtn" onClick={onPressKakaoShare}>
           <FontAwesomeIcon icon={faComment} /> 카카오로 공유하기
-        </div>
+        </button>
       </div>
       <div></div>
     </div>
