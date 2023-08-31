@@ -2,12 +2,11 @@
  * 종목 - 축구 응원 화면 (연세대학교 강제 응원)
  * @author 현웅
  */
-import { useState, useEffect, React } from "react";
+import { useState, useEffect } from "react";
 import "./soccer_yonsei.css";
-import { easeInOut, motion } from "framer-motion"
-import useWindowSize from 'react-use/lib/useWindowSize'
-import Confetti from 'react-confetti'
-// import { Share } from "./Share";
+import { easeInOut, motion } from "framer-motion";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 export function SoccerYonsei({ goNextEvent }) {
   const { width, height } = useWindowSize();
@@ -51,8 +50,8 @@ export function SoccerYonsei({ goNextEvent }) {
   const [changeBackground, setChangeBackground] = useState(false);
   const [victory, setVictory] = useState(false);
 
-  useEffect (() => {
-    let timer = setTimeout(() => {
+  useEffect(() => {
+    setTimeout(() => {
       if (clicked_Y) {
         setInfoTitleFirst("'연세대'");
         setInfoTitleSecond("승리");
@@ -60,16 +59,16 @@ export function SoccerYonsei({ goNextEvent }) {
         setVictory(true);
       }
     }, 500);
-  }, [clicked_Y])
+  }, [clicked_Y]);
   useEffect(() => {
-    let timer = setTimeout(() => {
+    setTimeout(() => {
       if (victory) {
         goNextEvent();
       }
-    }, 2500)
-  }, [victory])
+    }, 2500);
+  }, [victory]);
   return (
-    <div className={`${changeBackground ? 'blue_container' : 'container'}`}>
+    <div className={`${changeBackground ? "blue_container" : "container"}`}>
       {victory && (
         <motion.img
           className="congratulation"
@@ -80,15 +79,10 @@ export function SoccerYonsei({ goNextEvent }) {
           transition={{ duration: 1 }}
         />
       )}
-      {victory && (
-        <Confetti
-            width={width}
-            height={height}
-        />
-      )}
+      {victory && <Confetti width={width} height={height} />}
       <div className="header">
-          <h1 className="round_title">Round 5</h1>
-          <h3 className="event_title">축구</h3>
+        <h1 className="round_title">Round 5</h1>
+        <h3 className="event_title">축구</h3>
       </div>
       <div className="title">
         <h1 className="info_title">
@@ -107,11 +101,11 @@ export function SoccerYonsei({ goNextEvent }) {
         />
         <motion.img
           src="images/soccerball.svg"
-          alt="" 
-          className="soccerball" 
+          alt=""
+          className="soccerball"
           variants={variants}
           animate={clicked_Y ? "ball" : ""}
-          transition={{ duration: 0.8 }}  
+          transition={{ duration: 0.8 }}
         />
         <motion.img
           src="images/eagle-character.svg"
@@ -127,14 +121,18 @@ export function SoccerYonsei({ goNextEvent }) {
           <motion.button
             className="rotating-button"
             variants={variants}
-            id = "korea"
+            id="korea"
             onClick={() => {
               koreaClicked(true);
             }}
             animate={[clicked_K ? "click" : "", clicked_Y ? "korea_logo" : ""]}
             transition={{ duration: 2, ease: easeInOut }}
           >
-            <img src="images/korea_logo.svg" alt="고대" className="korea_logo"/>
+            <img
+              src="images/korea_logo.svg"
+              alt="고대"
+              className="korea_logo"
+            />
           </motion.button>
         </div>
         <motion.img
@@ -144,7 +142,12 @@ export function SoccerYonsei({ goNextEvent }) {
           animate={clicked_Y ? "lightning" : ""}
           transition={{ duration: 0.8 }}
         />
-        <div className="button_container" onClick={() => {yonseiClicked(true)}}>
+        <div
+          className="button_container"
+          onClick={() => {
+            yonseiClicked(true);
+          }}
+        >
           <button id="yonsei">
             <motion.img
               className="yonsei_logo"

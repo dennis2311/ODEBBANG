@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import anime from "animejs";
 import "./soccer.css";
 
@@ -9,7 +9,7 @@ export function SoccerKorea({ goNextEvent }) {
     setIsClicked(true);
   };
 
-  const handleYonseiVictory = () => {
+  const handleKoreaVictory = () => {
     anime({
       targets: ".page-wrapper",
       backgroundSize: "200%",
@@ -112,7 +112,13 @@ export function SoccerKorea({ goNextEvent }) {
       </div>
       <div className="buttons-container">
         <div className="button-container korea">
-          <div id="korea" className="univ-button" onClick={handleYonseiVictory}>
+          <div
+            id="korea"
+            className="univ-button"
+            onClick={() => {
+              handleKoreaVictory();
+            }}
+          >
             <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
           </div>
         </div>
