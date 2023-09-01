@@ -16,12 +16,12 @@ export function App() {
     const code = new URL(window.location.href).search
       .replace("?code=", "")
       .toLowerCase();
-    const kIndex = code.indexOf("k");
-    const yIndex = code.indexOf("y");
-    if (kIndex == yIndex) {
-      setUniv(Math.random() > 0.5 ? "KOREA" : "YONSEI");
+    if (code.includes("korea") || code.includes("f1ek0t")) {
+      setUniv("KOREA");
+    } else if (code.includes("yonsei") || code.includes("e09yyz")) {
+      setUniv("YONSEI");
     } else {
-      setUniv(kIndex > yIndex ? "KOREA" : "YONSEI");
+      setUniv(Math.random() > 0.5 ? "KOREA" : "YONSEI");
     }
   }, []);
 
