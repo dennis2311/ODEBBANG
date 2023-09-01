@@ -1,8 +1,3 @@
-/**
- * 종목 - 야구 응원 화면 (고려대학교 강제 응원)
- * @author 현웅
- */
-
 import "./Baseball.css";
 import anime from "animejs";
 import { useState } from "react";
@@ -112,6 +107,7 @@ export function BaseballKorea({ goNextEvent }) {
               duration: 500,
               complete: () => {
                 setTimeout(handleKoreaVictory, 1000);
+                //setTimeout(handleKoreaPage, 550);
               },
             });
           }, 1000);
@@ -148,6 +144,7 @@ export function BaseballKorea({ goNextEvent }) {
         }, 1500);
       },
     });
+
     anime({
       targets: ".baseball-tiger-image",
       width: "240px",

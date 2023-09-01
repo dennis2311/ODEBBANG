@@ -1,11 +1,10 @@
 @font-face {
   font-family: "neurimboGothicRegular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
 }
-
-
 
 .result_container {
   display: flex;
@@ -14,18 +13,14 @@
   width: 100%;
   height: 100%;
   align-items: center;
-  background-color: #000B45;
+  background-color: #000b45;
   border: 1px solid black;
-  background-color: #000B45;
+  background-color: #000b45;
   color: white;
-
-
 }
 
-
-
 .result_container.korea {
-  background-image: linear-gradient(#7C0415, #9E001600);
+  background-image: linear-gradient(#7c0415, #9e001600);
 }
 
 .result_title {
@@ -33,10 +28,19 @@
   font-size: 1.5rem;
   font-weight: 400;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-
 }
+
+/* .result_title>img:first-child {
+  width: 100px;
+  height: 100px;
+}
+
+.result_title>img:last-child {
+  width: 120px;
+  height: 100px;
+} */
 
 .result_content {
   display: flex;
@@ -57,6 +61,7 @@
 }
 
 .result_shareBtn {
+  width: 100%;
   font-size: 16px;
   font-weight: 700;
   color: #171601;
@@ -72,7 +77,8 @@
   justify-content: flex-start;
   width: 85vw;
   height: 3vh;
-  background: linear-gradient(90deg, rgba(0, 102, 255, 0.9) 0%, rgba(255, 0, 0, 0.9) 100%);
+  /* background: linear-gradient(90deg, rgba(0, 102, 255, 0.9) 0%, rgba(255, 0, 0, 0.9) 100%); */
+  background: linear-gradient(to right, blue, red);
   border-radius: 40px;
   padding: 20px;
   font-family: neurimboGothicRegular;
@@ -84,12 +90,11 @@
   width: 40px;
   height: 5vh;
   margin: 0 auto;
-
 }
 
 .result_img_share {
   width: 70vw;
-  margin-top: 100px;
+  margin-top: 45px;
 }
 
 @keyframes jump {
@@ -106,8 +111,6 @@
   }
 }
 
-
-
 .win {
   animation: jump 0.5s infinite;
 }
@@ -116,7 +119,6 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-
 }
 
 .add_heart {
@@ -128,7 +130,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .plus_one {
   font-size: 30px;
@@ -143,7 +144,6 @@
 }
 
 @keyframes fade-in-up {
-
   0%,
   10% {
     top: 50%;
