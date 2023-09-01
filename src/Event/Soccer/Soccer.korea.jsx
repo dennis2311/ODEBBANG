@@ -3,7 +3,6 @@ import anime from 'animejs';
 import "./Soccer.css"
 
 export function SoccerKorea({ goNextEvent }) {
-  
   const [isClicked, setIsClicked] = useState(false)
 
   const handleYonseiClick = () => {
