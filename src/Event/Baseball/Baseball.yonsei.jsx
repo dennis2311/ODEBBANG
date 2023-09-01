@@ -22,7 +22,7 @@ export function BaseballYonsei({ goNextEvent }) {
     // 컵 등장, 0.3초 후 섞는 애니메이션 시작
     // TODO: easing 변경
     anime({
-      targets: ".cup",
+      targets: ".baseball-cup",
       top: "50%",
       opacity: 1,
       duration: 1000,
@@ -36,7 +36,9 @@ export function BaseballYonsei({ goNextEvent }) {
 
     // 대학 로고 사라짐
     setTimeout(() => {
-      var buttons = document.getElementsByClassName("button-container");
+      var buttons = document.getElementsByClassName(
+        "baseball-button-container"
+      );
       for (const button of buttons) {
         button.style.opacity = 0;
       }
@@ -47,7 +49,7 @@ export function BaseballYonsei({ goNextEvent }) {
   const yabaweeAnimation = () => {
     // 왼쪽 컵
     anime({
-      targets: ".left.cup",
+      targets: ".baseball-left.baseball-cup",
       left: "75%",
       direction: "alternate",
       loop: 12,
@@ -57,7 +59,7 @@ export function BaseballYonsei({ goNextEvent }) {
 
     // 오른쪽 컵
     anime({
-      targets: ".right.cup",
+      targets: ".baseball-right.baseball-cup",
       right: "75%",
       direction: "alternate",
       loop: 12,
@@ -68,16 +70,18 @@ export function BaseballYonsei({ goNextEvent }) {
 
     setTimeout(() => {
       // 섞는 애니메이션 끝나면 고대 -> 연세 이미지 변경하고 컵 뒤에 띄워놓기
-      var koreaLogo = document.getElementById("korea-logo");
+      var koreaLogo = document.getElementById("baseball-korea-logo");
       koreaLogo.src = "images/yonsei_logo.svg";
-      var buttons = document.getElementsByClassName("button-container");
+      var buttons = document.getElementsByClassName(
+        "baseball-button-container"
+      );
       for (const button of buttons) {
         button.style.opacity = 1;
       }
 
       // 컵에 클릭 리스너 등록
-      var leftCup = document.getElementsByClassName("left cup");
-      var rightCup = document.getElementsByClassName("right cup");
+      var leftCup = document.querySelectorAll(".baseball-left.baseball-cup");
+      var rightCup = document.querySelectorAll(".baseball-right.baseball-cup");
       leftCup[0].addEventListener("click", () => handleCupClick("left"));
       rightCup[0].addEventListener("click", () => handleCupClick("right"));
     }, 12 * 200 + 500);
@@ -88,14 +92,14 @@ export function BaseballYonsei({ goNextEvent }) {
     if (which == "left") {
       // 왼쪽 컵 선택
       anime({
-        targets: ".left.cup",
+        targets: ".baseball-left.baseball-cup",
         top: "-30%",
         easing: "easeOutExpo",
         duration: 500,
         complete: () => {
           setTimeout(() => {
             anime({
-              targets: ".right.cup",
+              targets: ".baseball-right.baseball-cup",
               top: "-30%",
               easing: "easeOutExpo",
               duration: 500,
@@ -109,14 +113,14 @@ export function BaseballYonsei({ goNextEvent }) {
     } else {
       // 오른쪽 컵 선택
       anime({
-        targets: ".right.cup",
+        targets: ".baseball-right.baseball-cup",
         top: "-30%",
         easing: "easeOutExpo",
         duration: 500,
         complete: () => {
           setTimeout(() => {
             anime({
-              targets: ".left.cup",
+              targets: ".baseball-left.baseball-cup",
               top: "-30%",
               easing: "easeOutExpo",
               duration: 500,
@@ -134,7 +138,7 @@ export function BaseballYonsei({ goNextEvent }) {
   const handleYonseiVictory = () => {
     // 빨간색 배경 없애기
     anime({
-      targets: ".page-wrapper",
+      targets: ".baseball-page-wrapper",
       backgroundPosition: "150% 300%",
       duration: 1200,
       easing: "easeOutExpo",
@@ -147,7 +151,7 @@ export function BaseballYonsei({ goNextEvent }) {
 
     // 파란색 그라데이션 배경 추가
     anime({
-      targets: ".page-background",
+      targets: ".baseball-page-background",
       opacity: 1,
       duration: 1200,
       easing: "easeOutExpo",
@@ -155,7 +159,7 @@ export function BaseballYonsei({ goNextEvent }) {
 
     //독수리
     anime({
-      targets: ".eagle-image",
+      targets: ".baseball-eagle-image",
       width: "240px",
       height: "330px",
       bottom: "45%",
@@ -168,7 +172,7 @@ export function BaseballYonsei({ goNextEvent }) {
 
     //호랑이
     anime({
-      targets: ".tiger-image",
+      targets: ".baseball-tiger-image",
       width: "0",
       height: "0",
       bottom: "45%",
@@ -177,19 +181,19 @@ export function BaseballYonsei({ goNextEvent }) {
     });
 
     anime({
-      targets: ".ball-image",
+      targets: ".baseball-ball-image",
       top: "80%",
       left: "25%",
       duration: 1200,
       easing: "easeOutExpo",
     });
 
-    anime({
-      targets: ".prompt-text",
-      duration: 500,
-      easing: "easeOutExpo",
-      fontSize: "45px",
-    });
+    // anime({
+    //   targets: ".baseball-prompt-text",
+    //   duration: 500,
+    //   easing: "easeOutExpo",
+    //   fontSize: "45px",
+    // });
 
     // anime({
     //   targets: ".prompt-text",
@@ -206,34 +210,41 @@ export function BaseballYonsei({ goNextEvent }) {
     // });
 
     // prompt-text의 텍스트를 '연세대 승리'로 변경
-    var firstText = document.querySelector(".prompt-text.first");
-    var secondText = document.querySelector(".prompt-text.second");
-    firstText.innerHTML = "&apos;연세대&apos;";
-    secondText.innerHTML = "승리";
+    // var firstText = document.querySelector(".baseball-prompt-text.first");
+    // var secondText = document.querySelector(".baseball-prompt-text.second");
+    // firstText.innerHTML = "&apos;연세대&apos;";
+    // secondText.innerHTML = "승리";
 
     anime({
-      targets: ".result-image",
+      targets: ".baseball-prompt-text",
+      duration: 1200,
+      easing: "easeOutExpo",
+      opacity: 0,
+    });
+
+    anime({
+      targets: ".baseball-result-image",
       duration: 1200,
       easing: "easeOutExpo",
       opacity: 1,
     });
 
     anime({
-      targets: ".resultimage-container",
+      targets: ".baseball-result-image-container",
       duration: 1200,
       easing: "easeOutExpo",
       bottom: "40%",
     });
 
     anime({
-      targets: ".cup",
+      targets: ".baseball-cup",
       duration: 500,
       easing: "easeOutExpo",
       width: 0,
       height: 0,
       opacity: 0,
       complete: () => {
-        const cups = document.getElementsByClassName(".cup");
+        const cups = document.getElementsByClassName(".baseball-cup");
         for (const cup of cups) {
           cup.style.display = "none";
         }
@@ -242,62 +253,86 @@ export function BaseballYonsei({ goNextEvent }) {
   };
 
   return (
-    <div className="page-wrapper">
-      <div className="page-background">
-        <h5 className="headertext-round">Round 1</h5>
-        <h3 className="headertext-event">야구</h3>
-      </div>
-      <div className="header-container">
-        <h5 className="headertext-round">Round 1</h5>
-        <h3 className="headertext-event">야구</h3>
-        <div className="resultimage-container">
+    <div className="baseball-page-wrapper">
+      <div className="baseball-page-background">
+        <h5 className="baseball-headertext-round">Round 1</h5>
+        <h3 className="baseball-headertext-event">야구</h3>
+        <div className="baseball-result-image-container">
           <img
-            className="result-image"
+            className="baseball-result-image"
             src="images/congratulation.svg"
             alt="승리 이미지"
           />
         </div>
-        <div className="prompt-container">
-          <h1 className="prompt-text first">이길 것 같은 팀을</h1>
-          <h1 className="prompt-text second">선택해주세요</h1>
-        </div>
-        <div className="result-container">
-          <h4 className="result-text">&apos;연세대&apos;</h4>
-          <h4 className="result-text">승리</h4>
+        <div className="baseball-yonsei-result-container">
+          <h4 className="baseball-result-text">&apos;연세대&apos;</h4>
+          <h4 className="baseball-result-text">승리</h4>
         </div>
       </div>
-      <div className="body-container">
+      <div className="baseball-header-container">
+        <h5 className="baseball-headertext-round">Round 1</h5>
+        <h3 className="baseball-headertext-event">야구</h3>
+        <div className="baseball-prompt-container">
+          <h1 className="baseball-prompt-text baseball-first">
+            이길 것 같은 팀을
+          </h1>
+          <h1 className="baseball-prompt-text baseball-second">선택해주세요</h1>
+        </div>
+      </div>
+      <div className="baseball-body-container">
         <img
-          className="character-image tiger-image"
+          className="baseball-character-image baseball-tiger-image"
           src="images/tiger-character.svg"
           alt="호랑이 캐릭터"
         />
         <img
-          className="character-image eagle-image"
+          className="baseball-character-image baseball-eagle-image"
           src="images/eagle-character.svg"
           alt="독수리 캐릭터"
         />
         <img
-          className="ball-image"
+          className="baseball-ball-image"
           src="images/baseball-ball.svg"
           alt="야구공"
         />
       </div>
-      <div className="buttons-container">
-        <div className="button-container korea">
-          <div id="korea" className="univ-button" onClick={handleButtonClick}>
-            <img id="korea-logo" src="images/korea_logo.svg" alt="고대" />
+      <div className="baseball-buttons-container">
+        <div className="baseball-button-container baseball-korea">
+          <div
+            id="baseball-korea"
+            className="baseball-univ-button"
+            onClick={handleButtonClick}
+          >
+            <img
+              id="baseball-korea-logo"
+              src="images/korea_logo.svg"
+              alt="고대"
+            />
           </div>
         </div>
-        <div className="button-container yonsei">
-          <div id="yonsei" className="univ-button" onClick={handleButtonClick}>
-            <img id="yonsei-logo" src="images/yonsei_logo.svg" alt="연대" />
+        <div className="baseball-button-container baseball-yonsei">
+          <div
+            id="baseball-yonsei"
+            className="baseball-univ-button"
+            onClick={handleButtonClick}
+          >
+            <img
+              id="baseball-yonsei-logo"
+              src="images/yonsei_logo.svg"
+              alt="연대"
+            />
           </div>
         </div>
-        <img className="cup left" src="images/yabawee_cup.svg" />
-        <img className="cup right" src="images/yabawee_cup.svg" />
         <img
-          className="lightning-icon"
+          className="baseball-cup baseball-left"
+          src="images/yabawee_cup.svg"
+        />
+        <img
+          className="baseball-cup baseball-right"
+          src="images/yabawee_cup.svg"
+        />
+        <img
+          className="baseball-lightning-icon"
           src="images/lightning.png"
           alt="아이콘"
         />
