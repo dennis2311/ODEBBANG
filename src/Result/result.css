@@ -55,6 +55,13 @@
   font-family: neurimboGothicRegular;
 }
 
+.result_shareSubText {
+  font-size: 15px;
+  margin: 20px;
+  text-align: center;
+  font-family: neurimboGothicRegular;
+}
+
 .result_img {
   display: flex;
   justify-content: center;
