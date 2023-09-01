@@ -17,6 +17,8 @@ export function RugbyYonsei({ goNextEvent }) {
     anime({
       targets: ".page-wrapper-Yonsei",
       backgroundPosition: "150% 300%",
+      backgroundSize: "200%",
+      backgroundPosition: '10% 10%',
       duration: 1200,
       easing: "easeOutExpo",
       complete: () => {
@@ -28,7 +30,7 @@ export function RugbyYonsei({ goNextEvent }) {
 
     // 파란색 그라데이션 배경 추가
     anime({
-      targets: ".page-backgrounds-Yonsei",
+      targets: ".page-background-rb",
       opacity: 1,
       duration: 1200,
       easing: "easeOutExpo",
@@ -69,15 +71,14 @@ export function RugbyYonsei({ goNextEvent }) {
       targets: ".prompt-text",
       duration: 500,
       easing: "easeOutExpo",
-      opacity: 0,
+      fontSize: "45px",
     });
 
-    anime({
-      targets: ".result-text",
-      duration: 1300,
-      easing: "easeOutExpo",
-      opacity: 1,
-    });
+  
+    var firstText = document.querySelector(".prompt-text.first");
+    var secondText = document.querySelector(".prompt-text.second");
+    firstText.innerHTML = "&apos;연세대&apos;";
+    secondText.innerHTML = "승리";
 
     anime({
       targets: ".result-image",
@@ -87,7 +88,7 @@ export function RugbyYonsei({ goNextEvent }) {
     });
 
     anime({
-      targets: ".resultimage-container",
+      targets: ".resultimage-container-ry",
       duration: 1200,
       easing: "easeOutExpo",
       bottom: "40%",
@@ -125,16 +126,16 @@ export function RugbyYonsei({ goNextEvent }) {
 
   return (
     <div className={`page-wrapper ${isZoomed ? "zoomed" : ""}`}>
-      <div className="page-backgrounds-Yonsei">
+      <div className="page-background-rb">
         <h5 className="headertext-round">Round 4</h5>
         <h3 className="headertext-event">럭비</h3>
       </div>
 
-      <div className="header-container">
+      <div className="header-container-ry">
         <h5 className="headertext-round">Round 4</h5>
         <h3 className="headertext-event">럭비</h3>
 
-        <div className="resultimage-container">
+        <div className="resultimage-container-ry">
           <img
             className="result-image"
             src="images/congratulation.svg"
@@ -143,7 +144,7 @@ export function RugbyYonsei({ goNextEvent }) {
         </div>
 
         <div className="prompt-container" ref={promptContainerRef}>
-          <h1 className="prompt-text">
+          <h1 className="prompt-text first">
             {isAlternateText ? (
               <span className="animated-text" style={{ transitionDelay: "0s" }}>
                 이길 것 같지 <span className="underline-text">않은</span> 팀을
@@ -154,7 +155,7 @@ export function RugbyYonsei({ goNextEvent }) {
               </span>
             )}
           </h1>
-          <h1 className="prompt-text">선택해주세요</h1>
+          <h1 className="prompt-text second">선택해주세요</h1>
         </div>
         <div className="result-container">
           <h4 className="result-text">&apos;연세대&apos;</h4>
