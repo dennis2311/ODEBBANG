@@ -6,7 +6,7 @@
   font-style: normal;
 }
 
-.page-wrapper {
+.basketball-page-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
@@ -21,7 +21,7 @@
   background-attachment: fixed;
 }
 
-.page-background {
+.basketball-page-background {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -35,12 +35,12 @@
   opacity: 0;
 }
 
-.header-container {
+.basketball-header-container {
   width: 100%;
   height: 160px;
 }
 
-.headertext-round {
+.basketball-headertext-round {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -51,7 +51,7 @@
   margin-top: 10px;
 }
 
-.headertext-event {
+.basketball-headertext-event {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -61,26 +61,28 @@
   line-height: normal;
 }
 
-.resultimage-container {
+.basketball-result-image-container {
   margin-top: -150px;
   position: absolute;
   width: 100%;
 }
 
-.result-image {
-  width: 380px;
+.basketball-result-image {
+  width: 100%;
   height: 380px;
-  margin: auto;
+  object-fit: contain;
   opacity: 0;
 }
 
-.result-container {
-  margin-top: -95px;
-  margin-left: 60px;
+.basketball-yonsei-result-container {
   position: absolute;
+  width: 100%;
+  z-index: 20;
+  top: 20%;
+  transform: translate(0, -50%);
 }
 
-.result-text {
+.basketball-result-text {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -88,14 +90,13 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  opacity: 0;
 }
 
-.prompt-container {
+.basketball-prompt-container {
   margin-top: 18px;
 }
 
-.prompt-text {
+.basketball-prompt-text {
   color: #fff;
   text-align: center;
   font-family: neurimboGothicRegular;
@@ -105,14 +106,14 @@
   line-height: normal;
 }
 
-.body-container {
+.basketball-body-container {
   flex-grow: 1;
   width: 100%;
   display: flex;
   position: relative;
 }
 
-.character-image {
+.basketball-character-image {
   width: 192px;
   height: 264px;
   position: absolute;
@@ -120,15 +121,15 @@
   transform: translate(0, 50%);
 }
 
-.tiger-image {
+.basketball-tiger-image {
   left: 0;
 }
 
-.eagle-image {
+.basketball-eagle-image {
   right: 0;
 }
 
-.ball-image {
+.basketball-ball-image {
   width: 119px;
   height: 119px;
   position: absolute;
@@ -137,17 +138,18 @@
   transform: translate(-50%, -50%);
 }
 
-.buttons-container {
+.basketball-buttons-container {
   width: 100%;
   height: 160px;
   position: relative;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button-container {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
+.basketball-button-container {
+  margin: 0 10%;
   width: 120px;
   height: 120px;
   display: flex;
@@ -155,22 +157,19 @@
   align-items: center;
 }
 
-.korea.button-container {
-  left: 25%;
-  transform: translate(-50%, -50%);
-}
-
-.yonsei.button-container {
-  right: 25%;
-  transform: translate(50%, -50%);
-}
-
-.univ-button {
+.basketball-univ-button {
   background-color: transparent;
 }
 
-.univ-button:active {
+.basketball-univ-button:active {
   opacity: 60%;
+}
+
+.basketball-lightning-icon {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .flipK {
@@ -207,18 +206,10 @@
   }
 }
 
-#btn1 {
+#basketball-btn1 {
   position: absolute;
 }
 
-#btn2 {
+#basketball-btn2 {
   position: absolute;
-}
-
-#btn1:hover {
-  cursor: pointer;
-}
-
-#btn2:hover {
-  cursor: pointer;
 }
