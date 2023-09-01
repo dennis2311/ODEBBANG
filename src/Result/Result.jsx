@@ -180,6 +180,9 @@ export function Result({ univ, selectedUniv }) {
         <button className="result_shareBtn" onClick={onPressKakaoShare}>
           <FontAwesomeIcon icon={faComment} /> 카카오로 공유하기
         </button>
+        <div className="result_shareSubText">{`(공유받는 친구는 강제로 ${
+          selectedUniv === "KOREA" ? "고려대" : "연세대"
+        }를 응원하게 됩니다)`}</div>
       </div>
       <div></div>
     </div>
