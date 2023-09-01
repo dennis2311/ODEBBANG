@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import anime from 'animejs';
-import "./Soccer.css"
+import "./soccer_korea.css"
 
 export function SoccerKorea({ goNextEvent }) {
-  
+
   const [isClicked, setIsClicked] = useState(false)
 
   const handleYonseiClick = () => {
